@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Quicksand:wght@300..700&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-inter: 'Inter', sans-serif;
+    --font-quicksand: 'Quicksand', sans-serif;
+    --font-montserrat: 'Montserrat', sans-serif;
+    --text: #0D1118;
+    --background: #e8e8e8;
+    --primary: rgba(232, 232, 232, 0.85);
+    --secondary: ;
+    --accent: #FA7D19;
+  }
+
+  /* Dark Mode */
+  .dark {
+    --text: #e8e8e8;
+    --background: #0D1118;
+    --primary: rgba(13, 17, 24, 0.85);
+    --secondary: ;
+    --accent: #FA7D19;
+  }
+
+  .font-quicksand {
+    font-family: var(--font-quicksand);
+  }
+
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-montserrat {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .bg-fixed {
+    background-attachment: fixed;
+  }
+
+}
