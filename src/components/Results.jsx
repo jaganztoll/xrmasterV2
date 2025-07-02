@@ -68,7 +68,7 @@ const Results = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
             viewport={{ once: true, threshold: 0.1 }}
-            className="relative max-w-4xl w-full mx-auto overflow-hidden"
+            className={`relative max-w-4xl w-full mx-auto ${entry.moonOverlay ? 'overflow-visible' : 'overflow-hidden'}`}
           >
             <div className="relative max-w-4xl w-full mx-auto">
               <img
