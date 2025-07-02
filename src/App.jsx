@@ -48,7 +48,7 @@ const App = () => {
       <img
         src={darkMode ? bhtLogoLight : bhtLogoDark}
         alt="BHT Logo"
-        className="fixed bottom-4 right-4 w-72 h-auto select-none pointer-events-none z-50"
+        className="fixed bottom-4 right-4 w-48 h-auto select-none pointer-events-none z-50"
       />
     </>
   );

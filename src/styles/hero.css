@@ -1,0 +1,80 @@
+.hero-section {
+    font-family: var(--font-quicksand);
+    min-height: 100vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100%;
+    background-attachment: fixed;
+    position: relative;
+}
+
+.hero-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 10rem;
+}
+
+.hero-box {
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    max-width: 56rem;
+    width: 100%;
+    text-align: center;
+}
+
+.hero-title {
+    font-weight: 400;
+    font-size: 2.25rem;
+    /* text-4xl */
+    line-height: 1.3;
+}
+
+.hero-name {
+    font-weight: 300;
+    font-size: 1.5rem;
+    /* text-2xl */
+    margin-top: 1.5rem;
+}
+
+.hero-study {
+    font-weight: 100;
+    font-size: 1.125rem;
+    /* text-lg */
+}
+
+.hero-date {
+    font-weight: 100;
+    font-size: 1.25rem;
+    /* text-xl */
+    margin-top: 0.5rem;
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 1440px) {
+    .hero-content {
+        padding-top: 7rem;
+    }
+
+    .hero-title {
+        font-size: 1.875rem;
+    }
+
+    .hero-name {
+        font-size: 1.25rem;
+        margin-top: 0.5rem;
+    }
+
+    .hero-study {
+        font-size: 1rem;
+        margin-top: 0.1rem;
+    }
+
+    .hero-date {
+        font-size: 1rem;
+        margin-top: 0.1rem;
+    }
+}

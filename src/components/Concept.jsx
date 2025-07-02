@@ -1,10 +1,88 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Element } from 'react-scroll';
 import { motion } from 'framer-motion';
-
 import Brainstorm from '../assets/brainstorm.png';
 
+import ErsteEntwuerfe from '../assets/concept/rubriken.png';
+import PraezisierteEntwuerfe from '../assets/concept/rubriken-pe.png';
+
+
+const tabs = [
+  {
+    id: 'content',
+    title: 'Content Struktur',
+    items: [
+      {
+        title: 'Strukturprinzip',
+        text: 'Verzicht auf klassische Webelemente wie Footer oder Promomodule zur besseren Raumnutzung in MR.',
+      },
+      {
+        title: 'Bühnenkonzept',
+        text: 'Verwendung von Bühne S, M, L zur responsiven Darstellung – je nach Übersicht oder Detailtiefe.',
+      },
+      {
+        title: 'Zugänglichkeit von Metainformationen',
+        text: 'Informationen aus dem Footer über ein Panel-Untermenü zugänglich gemacht.',
+      },
+    ],
+  },
+  {
+    id: 'navigation',
+    title: 'Navigationsstruktur',
+    items: [
+      {
+        title: 'Startseitenlogik',
+        text: 'Startseite zeigt Panels standardmäßig offen und ermöglicht schnellen Zugriff auf Hauptfunktionen.',
+      },
+      {
+        title: 'Hauptnavigation',
+        text: 'Links: Mediathek, Interaktiv TV, Live TV – zentrale Platzierung der Interaktiv-Kategorie.',
+      },
+      {
+        title: 'Kontextsensitive Steuerung',
+        text: 'Zurück-Button, Exit-Icons, Panel-Hiding und Ambient-Light-Regler fördern Übersicht & Steuerbarkeit.',
+      },
+    ],
+  },
+  {
+    id: 'screendesign',
+    title: 'Screen Design',
+    items: [
+      {
+        title: 'ZDF-Brandguide',
+        text: 'Farben, Typografie, Icons orientieren sich eng an der ZDF-CI, mit leichten Anpassungen.',
+      },
+      {
+        title: 'Dark/Light Mode',
+        text: 'Optimierter Farbkontrast für MR – ZDF-Grau & Dunkelblau, Orange als Interaktionsfarbe.',
+      },
+      {
+        title: 'Hover-Feedback & Tiefenwirkung',
+        text: 'Hover-Animationen, Icon-Vergrößerung und 3D-Icons verbessern Zielgenauigkeit & Orientierung.',
+      },
+    ],
+  },
+  {
+    id: 'entwuerfe',
+    title: 'Entwürfe',
+    items: [
+      {
+        title: 'Erste Entwürfe',
+        text: '',
+      },
+      {
+        title: 'Präzisierte Entwürfe',
+        text: '',
+      },
+    ],
+  },
+];
+
 const Concept = () => {
+  const [activeTab, setActiveTab] = useState(tabs[0].id);
+
+  const activeContent = tabs.find((tab) => tab.id === activeTab);
+
   return (
     <section className="relative z-10 min-h-screen w-full">
       <Element name="concept" className="min-h-screen flex items-center justify-center py-16">
@@ -15,55 +93,79 @@ const Concept = () => {
         />
 
         {/* Inhalt */}
-        <div className="font-quicksand selection:bg-[var(--accent)] text-[var(--text)] px-8">
-          <div className={`bg-[var(--primary)] dark:bg-[var(--primary)] rounded-2xl px-6 py-8 max-w-6xl shadow-lg backdrop-blur-sm`}>
-            <motion.div
+        <div className="font-quicksand selection:bg-[var(--accent)] text-[var(--text)] px-8 relative z-10 w-full">
+          <div className="bg-[var(--primary)] dark:bg-[var(--primary)] rounded-2xl px-6 py-8 max-w-6xl mx-auto shadow-lg backdrop-blur-sm">
+            <motion.h2
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: 'easeOut' }}
               viewport={{ once: true }}
+              className="text-4xl font-semibold mb-8"
             >
-              <h2 className="text-4xl font-semibold mb-6">Konzept</h2>
-              <p className="font-thin text-xl text-justify leading-[1.6] hyphens-auto mt-6">
-                Die Konzeptentwicklung war ein iterativer Prozess, der durch kreative Techniken wie Brainstorming und Mind Mapping unterstützt wurde.
-                In enger Zusammenarbeit mit dem ZDF, insbesondere mit <span className='font-medium'>Rainer Kirchknopf</span> vom Innovation Office,
-                sowie <span className='font-medium'>Prof. Dr. Robert Strzebkowski </span> und <span className='font-medium'>Andreas Forster</span> wurden
-                die entwickelten Ideen kontinuierlich diskutiert und optimiert.
-              </p>
+              Konzept
+            </motion.h2>
 
-              <p className="font-thin text-xl text-justify leading-[1.6] hyphens-auto mt-6">
-                Im Rahmen des <span className='font-medium'>Design Thinking</span>-Prozesses lag der Schwerpunkt auf der nutzerzentrierten Entwicklung von Lösungen.
-                Neben der Analyse bestehender Systeme wurden kreative Ideen generiert, Prototypen entwickelt und iterativ getestet. Diese Methodik ermöglichte es,
-                innovative Ansätze für die Herausforderungen von Mixed Reality zu finden, ohne auf klassische Nutzerbefragungen zurückzugreifen, da diese in diesem
-                speziellen Kontext nicht zielführend waren.
-              </p>
+            {/* Tabs */}
+            <div className="flex flex-wrap gap-4 mb-10">
+              {tabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`text-base px-4 py-2 rounded-xl font-medium transition-all duration-200 transform ${activeTab === tab.id
+                    ? 'bg-[var(--accent)] text-white shadow-md translate-y-[1px]'
+                    : 'bg-[var(--secondary)] text-[var(--text)] hover:shadow-sm hover:translate-y-[1px]'
+                    }`}
+                >
+                  {tab.title}
+                </button>
+              ))}
+            </div>
 
-              {/* Die mehrfach wiederholten Absätze kannst du ggf. hier zusammenfassen oder separat lassen */}
-              <p className="font-thin text-xl text-justify leading-[1.6] hyphens-auto mt-6">
-                Zu Beginn wurden erste Entwürfe erstellt, um die grundlegende Struktur, Navigation und das Design der Mixed Reality Mediathek zu visualisieren.
-                Dies umfasste die Definition einer klaren Content- und Navigationsstruktur sowie eine ansprechende, nutzerfreundliche visuelle Gestaltung. Ziel
-                war es, eine effiziente und intuitive Benutzererfahrung zu schaffen, die sowohl den Anforderungen des ZDF als auch den spezifischen Anforderungen
-                der Mixed Reality Technologie gerecht wird.
-              </p>
-              <p className="font-thin text-xl text-justify leading-[1.6] hyphens-auto mt-6">
-                Zu Beginn wurden erste Entwürfe erstellt, um die grundlegende Struktur, Navigation und das Design der Mixed Reality Mediathek zu visualisieren.
-                Dies umfasste die Definition einer klaren Content- und Navigationsstruktur sowie eine ansprechende, nutzerfreundliche visuelle Gestaltung. Ziel
-                war es, eine effiziente und intuitive Benutzererfahrung zu schaffen, die sowohl den Anforderungen des ZDF als auch den spezifischen Anforderungen
-                der Mixed Reality Technologie gerecht wird.
-              </p>
-              <p className="font-thin text-xl text-justify leading-[1.6] hyphens-auto mt-6">
-                Zu Beginn wurden erste Entwürfe erstellt, um die grundlegende Struktur, Navigation und das Design der Mixed Reality Mediathek zu visualisieren.
-                Dies umfasste die Definition einer klaren Content- und Navigationsstruktur sowie eine ansprechende, nutzerfreundliche visuelle Gestaltung. Ziel
-                war es, eine effiziente und intuitive Benutzererfahrung zu schaffen, die sowohl den Anforderungen des ZDF als auch den spezifischen Anforderungen
-                der Mixed Reality Technologie gerecht wird.
-              </p>
-              <p className="font-thin text-xl text-justify leading-[1.6] hyphens-auto mt-6">
-                Zu Beginn wurden erste Entwürfe erstellt, um die grundlegende Struktur, Navigation und das Design der Mixed Reality Mediathek zu visualisieren.
-                Dies umfasste die Definition einer klaren Content- und Navigationsstruktur sowie eine ansprechende, nutzerfreundliche visuelle Gestaltung. Ziel
-                war es, eine effiziente und intuitive Benutzererfahrung zu schaffen, die sowohl den Anforderungen des ZDF als auch den spezifischen Anforderungen
-                der Mixed Reality Technologie gerecht wird.
-              </p>
-            </motion.div>
+            {/* Inhalt des aktiven Tabs */}
+            {activeTab !== 'entwuerfe' ? (
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="space-y-6"
+              >
+                {activeContent?.items.map((item, index) => (
+                  <div
+                    key={index}
+                    className="bg-[var(--secondary)] dark:bg-[var(--secondary)] p-6 rounded-xl shadow-sm hover:shadow-md hover:translate-y-[1px] transition-all duration-200"
+                  >
+                    <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                    <p className="text-lg leading-relaxed">{item.text}</p>
+                  </div>
+                ))}
+              </motion.div>
+            ) : (
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="grid grid-cols-1 md:grid-cols-2 gap-8"
+              >
+                <div className="flex flex-col items-center">
+                  <img
+                    src={ErsteEntwuerfe}
+                    alt="Erste Entwürfe"
+                    className="rounded-xl shadow-md max-w-full h-auto"
+                  />
+                  <p className="mt-4 text-center text-lg font-semibold">Erste Entwürfe</p>
+                </div>
+                <div className="flex flex-col items-center">
+                  <img
+                    src={PraezisierteEntwuerfe}
+                    alt="Präzisierte Entwürfe"
+                    className="rounded-xl shadow-md max-w-full h-auto"
+                  />
+                  <p className="mt-4 text-center text-lg font-semibold">Präzisierte Entwürfe</p>
+                </div>
+              </motion.div>
+            )}
           </div>
         </div>
       </Element>

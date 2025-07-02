@@ -9,7 +9,7 @@
     --text: #0D1118;
     --background: #e8e8e8;
     --primary: rgba(232, 232, 232, 0.85);
-    --secondary: ;
+    --secondary: #d0d0d0;
     --accent: #FA7D19;
   }
 
@@ -18,7 +18,7 @@
     --text: #e8e8e8;
     --background: #0D1118;
     --primary: rgba(13, 17, 24, 0.85);
-    --secondary: ;
+    --secondary: #1C212A;
     --accent: #FA7D19;
   }
 
