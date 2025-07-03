@@ -3,7 +3,8 @@ import { Element } from 'react-scroll';
 import { motion } from 'framer-motion';
 import Brainstorm from '../assets/brainstorm.png';
 
-import ConceptSlider from './ConceptSlider'; // Import der ausgelagerten Slider-Komponente
+import ConceptSlider from './ConceptSlider';
+import ScreenDesignSlider from './ScreenDesignSlider';
 
 const tabs = [
   {
@@ -11,16 +12,28 @@ const tabs = [
     title: 'Content Struktur',
     items: [
       {
-        title: 'Strukturprinzip',
-        text: 'Verzicht auf klassische Webelemente wie Footer oder Promomodule zur besseren Raumnutzung in MR.',
+        title: 'Verzicht auf klassische Webelemente',
+        text: 'Hauptnavigation, Promomodule und Footer werden bewusst ausgelassen, da sie für MR unpraktisch sind (z. B. Hover, Scroll).',
       },
       {
-        title: 'Bühnenkonzept',
-        text: 'Verwendung von Bühne S, M, L zur responsiven Darstellung – je nach Übersicht oder Detailtiefe.',
+        title: 'Bühnenkonzept (S, M, L)',
+        text: 'Bühne S für Übersichtsseiten, Bühne M bei Detailtiefe (z. B. Serien), Kombination S+L in Gesamtübersicht zur Hervorhebung aktueller Inhalte.',
       },
       {
-        title: 'Zugänglichkeit von Metainformationen',
-        text: 'Informationen aus dem Footer über ein Panel-Untermenü zugänglich gemacht.',
+        title: 'Optimierte Raumaufteilung',
+        text: 'Kompakte Bühnenstruktur ersetzt klassische Seitenlayouts zur effizienten Nutzung des begrenzten MR-Raums.',
+      },
+      {
+        title: 'Verzicht auf Promomodule',
+        text: 'Promoinhalte entfallen zugunsten aktiv aufrufbarer, relevanter Inhalte ohne visuelle Überfrachtung.',
+      },
+      {
+        title: 'Alternative zum Footer',
+        text: 'Footer-Informationen (z. B. Impressum, Hilfe) sind über ein kontextsensitives Untermenü im rechten Panel erreichbar.',
+      },
+      {
+        title: 'Fokuslenkung durch Reduktion',
+        text: 'Durch Weglassen irrelevanter Elemente bleibt der Nutzerfokus auf den eigentlichen Inhalten, was Übersicht und Immersion erhöht.',
       },
     ],
   },
@@ -30,40 +43,55 @@ const tabs = [
     items: [
       {
         title: 'Startseitenlogik',
-        text: 'Startseite zeigt Panels standardmäßig offen und ermöglicht schnellen Zugriff auf Hauptfunktionen.',
+        text: 'Startseite zeigt standardmäßig geöffnete Navigationspanels, um eine schnelle Orientierung und Übersicht zu ermöglichen.',
       },
       {
-        title: 'Hauptnavigation',
-        text: 'Links: Mediathek, Interaktiv TV, Live TV – zentrale Platzierung der Interaktiv-Kategorie.',
+        title: 'Dynamisches Panel-Verhalten',
+        text: 'Navigationspanels schließen sich automatisch beim Verlassen der Startseite (Prinzip: Hide) und öffnen sich bei erneuter Interaktion.',
       },
       {
-        title: 'Kontextsensitive Steuerung',
-        text: 'Zurück-Button, Exit-Icons, Panel-Hiding und Ambient-Light-Regler fördern Übersicht & Steuerbarkeit.',
+        title: 'Reihenfolge der Hauptfunktionen',
+        text: 'Links nach rechts: Mediathek, Interaktives TV (zentral), Live TV – angeordnet nach Nutzungshäufigkeit und natürlichem Lesefluss.',
+      },
+      {
+        title: 'Linkes Navigationspanel',
+        text: 'Beinhaltet Rubrikenübersicht, Interaktives TV, Live TV, Sendung verpasst – bietet konsistenten Zugriff auf zentrale Inhalte.',
+      },
+      {
+        title: 'Rechtes Navigationspanel',
+        text: 'ZDF-Logo führt zur Startseite; Glühbirnensymbol erlaubt Steuerung der Ambient-Beleuchtung; enthält außerdem Zugang zu „Mein ZDF“ & barrierefreien Angeboten.',
+      },
+      {
+        title: 'Dark/Light Mode',
+        text: 'Umschaltbares Farbschema für bessere Benutzerfreundlichkeit und Berücksichtigung individueller Präferenzen.',
+      },
+      {
+        title: 'Rubriken-Navigation',
+        text: 'Zugriff entweder über Hauptübersichtsseite oder direkt zur Rubrikenseite (z. B. Serien, Dokus); fördert Aufgabenangemessenheit.',
+      },
+      {
+        title: 'Videowiedergabe im Vollbild',
+        text: 'Video startet im Vollbild (Panels werden ausgeblendet, Hauptscreen bleibt gleich groß), um maximale Immersion zu bieten.',
+      },
+      {
+        title: 'Mediensteuerung im Vollbild',
+        text: 'Steuerpanel erscheint am unteren Rand – bleibt im Vollbild sichtbar und erlaubt ergonomische, kontextbezogene Bedienung.',
+      },
+      {
+        title: 'Zurück-Button',
+        text: 'Ermöglicht jederzeitiges Zurückkehren zur vorherigen Ansicht; erhöht Erwartungskonformität und Usability.',
       },
     ],
   },
   {
     id: 'screendesign',
     title: 'Screen Design',
-    items: [
-      {
-        title: 'ZDF-Brandguide',
-        text: 'Farben, Typografie, Icons orientieren sich eng an der ZDF-CI, mit leichten Anpassungen.',
-      },
-      {
-        title: 'Dark/Light Mode',
-        text: 'Optimierter Farbkontrast für MR – ZDF-Grau & Dunkelblau, Orange als Interaktionsfarbe.',
-      },
-      {
-        title: 'Hover-Feedback & Tiefenwirkung',
-        text: 'Hover-Animationen, Icon-Vergrößerung und 3D-Icons verbessern Zielgenauigkeit & Orientierung.',
-      },
-    ],
+    items: [], // Externe Komponente ScreenDesignSlider
   },
   {
     id: 'entwuerfe',
     title: 'Entwürfe',
-    items: [],
+    items: [], // Externe Komponente ConceptSlider
   },
 ];
 
@@ -111,13 +139,17 @@ const Concept = () => {
             </div>
 
             {/* Inhalt */}
-            {activeTab !== 'entwuerfe' ? (
+            {activeTab === 'entwuerfe' ? (
+              <ConceptSlider />
+            ) : activeTab === 'screendesign' ? (
+              <ScreenDesignSlider />
+            ) : (
               <motion.div
                 key={activeTab}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="space-y-6"
+                className="grid grid-cols-1 md:grid-cols-2 gap-6"
               >
                 {activeContent?.items.map((item, index) => (
                   <div
@@ -129,8 +161,6 @@ const Concept = () => {
                   </div>
                 ))}
               </motion.div>
-            ) : (
-              <ConceptSlider />
             )}
           </div>
         </div>
