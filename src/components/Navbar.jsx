@@ -18,7 +18,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
   }, []);
 
   const handleLinkClick = () => {
-    setMenuOpen(false); // Menü schließen nach Klick
+    setMenuOpen(false);
   };
 
   return (

@@ -3,9 +3,7 @@ import { Element } from 'react-scroll';
 import { motion } from 'framer-motion';
 import Brainstorm from '../assets/brainstorm.png';
 
-import ErsteEntwuerfe from '../assets/concept/rubriken.png';
-import PraezisierteEntwuerfe from '../assets/concept/rubriken-pe.png';
-
+import ConceptSlider from './ConceptSlider'; // Import der ausgelagerten Slider-Komponente
 
 const tabs = [
   {
@@ -65,16 +63,7 @@ const tabs = [
   {
     id: 'entwuerfe',
     title: 'Entwürfe',
-    items: [
-      {
-        title: 'Erste Entwürfe',
-        text: '',
-      },
-      {
-        title: 'Präzisierte Entwürfe',
-        text: '',
-      },
-    ],
+    items: [],
   },
 ];
 
@@ -121,7 +110,7 @@ const Concept = () => {
               ))}
             </div>
 
-            {/* Inhalt des aktiven Tabs */}
+            {/* Inhalt */}
             {activeTab !== 'entwuerfe' ? (
               <motion.div
                 key={activeTab}
@@ -141,30 +130,7 @@ const Concept = () => {
                 ))}
               </motion.div>
             ) : (
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-8"
-              >
-                <div className="flex flex-col items-center">
-                  <img
-                    src={ErsteEntwuerfe}
-                    alt="Erste Entwürfe"
-                    className="rounded-xl shadow-md max-w-full h-auto"
-                  />
-                  <p className="mt-4 text-center text-lg font-semibold">Erste Entwürfe</p>
-                </div>
-                <div className="flex flex-col items-center">
-                  <img
-                    src={PraezisierteEntwuerfe}
-                    alt="Präzisierte Entwürfe"
-                    className="rounded-xl shadow-md max-w-full h-auto"
-                  />
-                  <p className="mt-4 text-center text-lg font-semibold">Präzisierte Entwürfe</p>
-                </div>
-              </motion.div>
+              <ConceptSlider />
             )}
           </div>
         </div>
