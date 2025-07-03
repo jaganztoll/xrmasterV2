@@ -64,19 +64,19 @@ const ConceptSlider = () => {
                 {slides.map(({ leftImg, leftTitle, rightImg, rightTitle }, index) => (
                     <SwiperSlide key={index}>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="flex flex-col items-center">
+                            <div className="flex flex-col items-center bg-[var(--wireframes)] rounded-xl shadow-md p-4">
                                 <img
                                     src={leftImg}
                                     alt={leftTitle}
-                                    className="rounded-xl shadow-md max-w-full h-[300px] object-contain"
+                                    className="max-w-full h-[300px] object-contain"
                                 />
                                 <p className="mt-4 text-center text-lg font-semibold">{leftTitle}</p>
                             </div>
-                            <div className="flex flex-col items-center">
+                            <div className="flex flex-col items-center bg-[var(--wireframes)] rounded-xl shadow-md p-4">
                                 <img
                                     src={rightImg}
                                     alt={rightTitle}
-                                    className="rounded-xl shadow-md max-w-full h-[300px] object-contain"
+                                    className="max-w-full h-[300px] object-contain"
                                 />
                                 <p className="mt-4 text-center text-lg font-semibold">{rightTitle}</p>
                             </div>
@@ -85,7 +85,6 @@ const ConceptSlider = () => {
                 ))}
             </Swiper>
 
-            {/* Eigene Navigation unter den Bildern */}
             <div className="flex justify-center gap-10 mt-6">
                 <button
                     onClick={() => swiperRef.current?.slidePrev()}
