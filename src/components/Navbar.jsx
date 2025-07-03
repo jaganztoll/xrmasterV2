@@ -51,7 +51,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
               {id === "projectinfo" && "Projektinfo"}
               {id === "requirements" && "Anforderungen"}
               {id === "concept" && "Konzept"}
-              {id === "implementation" && "Umsetzung"}
+              {id === "implementation" && "Entwicklung"}
               {id === "results" && "Ergebnisse"}
             </Link>
           ))}
@@ -90,7 +90,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
               {id === "projectinfo" && "Projektinfo"}
               {id === "requirements" && "Anforderungen"}
               {id === "concept" && "Konzept"}
-              {id === "implementation" && "Umsetzung"}
+              {id === "implementation" && "Entwicklung"}
               {id === "results" && "Ergebnisse"}
             </Link>
           ))}
