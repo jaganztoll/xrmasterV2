@@ -128,7 +128,7 @@ const Concept = () => {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`text-base px-4 py-2 rounded-xl font-medium transition-all duration-200 transform ${activeTab === tab.id
+                  className={`text-xl px-4 py-2 rounded-xl font-medium transition-all duration-200 transform ${activeTab === tab.id
                     ? 'bg-[var(--accent)] text-white shadow-md translate-y-[1px]'
                     : 'bg-[var(--secondary)] text-[var(--text)] hover:shadow-sm hover:translate-y-[1px]'
                     }`}
