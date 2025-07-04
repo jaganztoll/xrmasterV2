@@ -16,6 +16,7 @@ import Navigationspanel8 from '../assets/implementation/navigationspanel8.png';
 import Navigationspanel9 from '../assets/implementation/navigationspanel9.png';
 import Navigationspanel10 from '../assets/implementation/navigationspanel10.png';
 import Navigationspanel11 from '../assets/implementation/navigationspanel11.png';
+import Navigationspanel12 from '../assets/implementation/navigationspanel12.png';
 
 import RubrikenDarkV1 from '../assets/implementation/rubriken-dark-v1-3.png';
 import RubrikenDarkV4 from '../assets/implementation/rubriken-dark-v4.png';
@@ -45,124 +46,123 @@ import Mediensteuerung5 from '../assets/implementation/mediensteuerung5.png';
 
 import Navigationsstruktur from '../assets/implementation/navigationsstruktur.png';
 
-
-const tabs = [
-    {
-        id: 'iteration',
-        title: 'Iterative Entwicklung',
-        pages: [
-            [
-                {
-                    title: 'Version 1–3',
-                    text: 'Schrittweise Überarbeitung der Panels, Farbwerte, Hover-Interaktionen und Layouts; Fokus lag auf Nutzerführung und Lesbarkeit.',
-                },
-                {
-                    title: 'Version 4',
-                    text: 'Finalisierung: dezente Panels, neue Farbgebung (Dark Mode Blau), Icons skaliert, Hover-Verhalten subtiler, ZDF-Orange als Feedback-Farbe.',
-                },
-                {
-                    title: 'Gestaltungsprinzipien',
-                    text: 'Nähe, Prägnanz, Konsistenz und Ähnlichkeit flossen systematisch in jede Iteration ein.',
-                },
-            ],
-            [
-                {
-                    title: 'Startseite',
-                    text: 'Navigationspanels angepasst, Hover-Interaktionen verfeinert, Icons beschriftet, Dark Mode abgestimmt auf Hintergrund.',
-                    images: [Startseite1, Startseite2],
-                },
-            ],
-            [
-                {
-                    title: 'Navigationspanels',
-                    text: 'Panels schließen sich automatisch, neue Farbgebung, optimierte Icons.',
-                    images: [Navigationspanel1, Navigationspanel2, Navigationspanel3, Navigationspanel4, Navigationspanel5, Navigationspanel6, Navigationspanel7, Navigationspanel8, Navigationspanel9, Navigationspanel10, Navigationspanel11],
-                },],
-            [
-                {
-                    title: 'Rubrikauswahl',
-                    text: 'Kachelgestaltung überarbeitet, Bilder ersetzen Textfelder, Hover-Feedback subtil durch Umrandung und leichte Skalierung.',
-                    images: [RubrikenDarkV1, RubrikenDarkV4, RubrikenLightV1, RubrikenLightV4],
-                },
-            ],
-            [
-                {
-                    title: 'Übersichtsseiten',
-                    text: 'Kombination von Bühne S+L zur Hervorhebung aktueller Inhalte.',
-                    images: [Uebersicht1, Uebersicht2, Uebersicht3, Uebersicht4],
-                },
-            ],
-            [
-                {
-                    title: 'Inhaltsübersicht Serien',
-                    text: 'Dropdown für Staffelauswahl eingeführt, Hover-Verhalten angepasst.',
-                    images: [UebersichtSerien1, UebersichtSerien2, UebersichtSerien3, UebersichtSerien4],
-                },
-            ],
-            [
-                {
-                    title: 'Inhaltsübersicht Doku',
-                    text: 'Interaktive Dokumentation und intuitive Navigation für Doku-Inhalte.',
-                    images: [UebersichtDoku1, UebersichtDoku2, UebersichtDoku3, UebersichtDoku4],
-                },
-            ],
-            [
-                {
-                    title: 'Mediensteuerung',
-                    text: 'Icongröße reduziert, Position verbessert, Cube-Icon ergänzt, Vollbildmodus integriert.',
-                    images: [Mediensteuerung1, Mediensteuerung2, Mediensteuerung3, Mediensteuerung4, Mediensteuerung5],
-                },
-            ],
-        ],
-    },
-    {
-        id: 'navigation',
-        title: 'Navigations & Interaktionspfade',
-        pages: [
-            [
-                {
-                    title: 'Vereinfachte Navigationsstruktur',
-                    images: [Navigationsstruktur],
-                },
-            ],
-            [
-                {
-                    title: 'Mediathek The Rookie',
-                    text: 'Spezifische Navigationspfade für die Mediathek am Beispiel The Rookie.',
-                    images: [],
-                },
-            ],
-            [
-                {
-                    title: 'Interaktiv TV Der Mond',
-                    text: 'Interaktionspfade und Nutzerführung bei Interaktiv TV am Beispiel Der Mond.',
-                    images: [],
-                },
-            ],
-            [
-                {
-                    title: 'LiveTV ZDFneo',
-                    text: 'LiveTV Navigation und Bedienung am Beispiel ZDFneo.',
-                    images: [],
-                },
-            ],
-        ],
-    },
-];
-
 const Implementation = () => {
-    const [activeTab, setActiveTab] = useState(tabs[0].id);
-    const [pageIndex, setPageIndex] = useState(0);
+    const [activeTopic, setActiveTopic] = useState('iteration');
+    const [activeSection, setActiveSection] = useState('startseite');
+    const [slideIndex, setSlideIndex] = useState(0);
+
+    const topics = [
+        {
+            id: 'iteration',
+            title: 'Iterative Entwicklung',
+            sections: [
+                {
+                    id: 'iteration',
+                    title: 'Iterationsprozess',
+                    slides: [
+                        {
+                            title: 'Version 1–3',
+                            text: 'Schrittweise Überarbeitung der Panels, Farbwerte, Hover-Interaktionen und Layouts; Fokus lag auf Nutzerführung und Lesbarkeit.',
+                        },
+                        {
+                            title: 'Version 4',
+                            text: 'Finalisierung: dezente Panels, neue Farbgebung (Dark Mode Blau), Icons skaliert, Hover-Verhalten subtiler, ZDF-Orange als Feedback-Farbe.',
+                        },
+                        {
+                            title: 'Gestaltungsprinzipien',
+                            text: 'Nähe, Prägnanz, Konsistenz und Ähnlichkeit flossen systematisch in jede Iteration ein.',
+                        },
+                    ],
+                },
+                {
+                    id: 'startseite',
+                    title: 'Startseite',
+                    slides: [
+                        { title: 'Startseite v1', text: 'Erste Version mit Navigationsstruktur.', images: [Startseite1] },
+                        { title: 'Startseite v2', text: 'Dark Mode und Layout optimiert.', images: [Startseite2] },
+                    ],
+                },
+                {
+                    id: 'navi',
+                    title: 'Navigationspanels',
+                    slides: [
+                        { title: 'Panels', images: [Navigationspanel6, Navigationspanel12, Navigationspanel7, Navigationspanel8, Navigationspanel9, Navigationspanel10, Navigationspanel11] },
+                        { title: 'Panels 1–3', images: [Navigationspanel1, Navigationspanel2, Navigationspanel3] },
+                        { title: 'Panels 4–6', images: [Navigationspanel4, Navigationspanel5, Navigationspanel6] },
+                        { title: 'Panels 7–9', images: [Navigationspanel7, Navigationspanel8, Navigationspanel9] },
+                        { title: 'Panels 10–11', images: [Navigationspanel10, Navigationspanel11] },
+                    ],
+                },
+                {
+                    id: 'rubriken',
+                    title: 'Rubrikauswahl',
+                    slides: [
+                        { title: 'Dark Mode v1 vs v4', images: [RubrikenDarkV1, RubrikenDarkV4] },
+                        { title: 'Light Mode v1 vs v4', images: [RubrikenLightV1, RubrikenLightV4] },
+                    ],
+                },
+                {
+                    id: 'uebersicht',
+                    title: 'Übersichtsseiten',
+                    slides: [
+                        { title: 'Übersicht allgemein', images: [Uebersicht1, Uebersicht2, Uebersicht3, Uebersicht4] },
+                        { title: 'Serienübersicht', images: [UebersichtSerien1, UebersichtSerien2, UebersichtSerien3, UebersichtSerien4] },
+                        { title: 'Dokuübersicht', images: [UebersichtDoku1, UebersichtDoku2, UebersichtDoku3, UebersichtDoku4] },
+                    ],
+                },
+                {
+                    id: 'medien',
+                    title: 'Mediensteuerung',
+                    slides: [
+                        { title: 'Player UI Varianten', images: [Mediensteuerung1, Mediensteuerung2, Mediensteuerung3, Mediensteuerung4, Mediensteuerung5] },
+                    ],
+                },
+            ],
+        },
+        {
+            id: 'navigationsstruktur',
+            title: 'Navigationsstruktur & Interaktion',
+            sections: [
+                {
+                    id: 'navi-struktur',
+                    title: 'Vereinfachte Navigationsstruktur',
+                    slides: [
+                        { title: 'Strukturübersicht', text: 'Schematische Darstellung der Navigationslogik.', images: [Navigationsstruktur] },
+                    ],
+                },
+                {
+                    id: 'the-rookie',
+                    title: 'Mediathek "The Rookie"',
+                    slides: [
+                        { title: 'Strukturübersicht', text: 'Schematische Darstellung der Navigationslogik.', images: [Navigationsstruktur] },
+                    ],
+                },
+                {
+                    id: 'der-mond',
+                    title: 'Interaktiv TV "Der Mond"',
+                    slides: [
+                        { title: 'Strukturübersicht', text: 'Schematische Darstellung der Navigationslogik.', images: [Navigationsstruktur] },
+                    ],
+                },
+            ],
+        },
+    ];
+
+    const currentTopic = topics.find(t => t.id === activeTopic);
+    const currentSection = currentTopic?.sections.find(s => s.id === activeSection);
+    const currentSlide = currentSection?.slides[slideIndex];
 
     useEffect(() => {
-        setPageIndex(0);
-    }, [activeTab]);
+        setActiveSection(currentTopic?.sections[0].id || '');
+        setSlideIndex(0);
+    }, [activeTopic]);
 
-    const activeTabData = tabs.find((t) => t.id === activeTab);
-    const currentPage = activeTabData.pages[pageIndex];
+    useEffect(() => {
+        setSlideIndex(0);
+    }, [activeSection]);
 
-    const handlePrev = () => setPageIndex((i) => Math.max(i - 1, 0));
-    const handleNext = () => setPageIndex((i) => Math.min(i + 1, activeTabData.pages.length - 1));
+    const handlePrev = () => setSlideIndex(i => Math.max(i - 1, 0));
+    const handleNext = () => setSlideIndex(i => Math.min(i + 1, (currentSection?.slides.length || 1) - 1));
 
     return (
         <section className="relative z-10 min-h-screen w-full">
@@ -179,63 +179,78 @@ const Implementation = () => {
                             Entwicklung
                         </motion.h2>
 
-                        <div className="flex flex-wrap gap-4 mb-10">
-                            {tabs.map((tab) => (
+                        <div className="flex flex-wrap gap-4 mb-6">
+                            {topics.map(t => (
                                 <button
-                                    key={tab.id}
-                                    onClick={() => setActiveTab(tab.id)}
-                                    className={`text-base px-4 py-2 rounded-xl font-medium transition-all duration-200 transform ${activeTab === tab.id
-                                        ? 'bg-[var(--accent)] text-white shadow-md translate-y-[1px]'
-                                        : 'bg-[var(--secondary)] text-[var(--text)] hover:shadow-sm hover:translate-y-[1px]'
+                                    key={t.id}
+                                    onClick={() => setActiveTopic(t.id)}
+                                    className={`text-base px-4 py-2 rounded-xl font-medium transition-all duration-200 transform ${activeTopic === t.id ? 'bg-[var(--accent)] text-white shadow-md translate-y-[1px]' : 'bg-[var(--secondary)] text-[var(--text)] hover:shadow-sm hover:translate-y-[1px]'
                                         }`}
                                 >
-                                    {tab.title}
+                                    {t.title}
                                 </button>
                             ))}
                         </div>
 
-                        <motion.div
-                            key={`${activeTab}-${pageIndex}`}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5 }}
-                            className="space-y-10"
-                        >
-                            {currentPage.map((item, idx) => (
-                                <div key={idx} className="bg-[var(--secondary)] p-6 rounded-xl shadow-sm">
-                                    <h3 className="text-2xl font-semibold mb-2">{item.title}</h3>
-                                    <p className="text-lg leading-relaxed mb-4">{item.text}</p>
-                                    {item.images && item.images.length > 0 && (
-                                        <div className="flex flex-wrap gap-4">
-                                            {item.images.map((imgSrc, imgIdx) => (
-                                                <div
-                                                    key={imgIdx}
-                                                    className="p-2 bg-black/5 rounded-lg border border-black/10 max-w-[300px] max-h-[220px] flex items-center justify-center"
-                                                >
-                                                    <img
-                                                        src={imgSrc}
-                                                        alt={`${item.title} Bild ${imgIdx + 1}`}
-                                                        className="object-scale-down max-w-full max-h-full"
-                                                    />
-                                                </div>
-                                            ))}
-                                        </div>
-                                    )}
-                                </div>
+                        <div className="flex flex-wrap gap-3 mb-8">
+                            {currentTopic?.sections.map(section => (
+                                <button
+                                    key={section.id}
+                                    onClick={() => setActiveSection(section.id)}
+                                    className={`text-sm px-3 py-1 rounded-md border transition ${activeSection === section.id ? 'bg-[var(--accent)] text-white border-[var(--accent)]' : 'bg-[var(--secondary)] text-[var(--text)] hover:border-[var(--accent)]'
+                                        }`}
+                                >
+                                    {section.title}
+                                </button>
                             ))}
-                        </motion.div>
+                        </div>
+
+                        {currentSlide && (
+                            <motion.div
+                                key={`${activeSection}-${slideIndex}`}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.4 }}
+                                className="bg-[var(--secondary)] p-6 rounded-xl shadow-sm space-y-6"
+                            >
+                                <h3 className="text-2xl font-semibold">{currentSlide.title}</h3>
+                                {currentSlide.text && <p className="text-lg leading-relaxed">{currentSlide.text}</p>}
+                                {currentSlide.images?.length > 0 && (
+                                    <div className="flex flex-wrap justify-center gap-4">
+                                        {currentSlide.images.map((imgSrc, idx) => (
+                                            <div
+                                                key={idx}
+                                                className="bg-black/5 border border-black/10 rounded-lg p-2"
+                                                style={{ display: 'inline-block' }}
+                                            >
+                                                <img
+                                                    src={imgSrc}
+                                                    alt={`${currentSlide.title} Bild ${idx + 1}`}
+                                                    className="block"
+                                                    style={{
+                                                        maxWidth: '300px',
+                                                        maxHeight: '220px',
+                                                        objectFit: 'contain',
+                                                    }}
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </motion.div>
+                        )}
 
                         <div className="flex justify-between mt-8">
                             <button
                                 onClick={handlePrev}
-                                disabled={pageIndex === 0}
+                                disabled={slideIndex === 0}
                                 className="px-6 py-2 rounded-lg bg-[var(--secondary)] text-[var(--text)] disabled:opacity-50 hover:bg-[var(--accent)] transition-colors"
                             >
                                 Zurück
                             </button>
                             <button
                                 onClick={handleNext}
-                                disabled={pageIndex === activeTabData.pages.length - 1}
+                                disabled={slideIndex === (currentSection?.slides.length || 1) - 1}
                                 className="px-6 py-2 rounded-lg bg-[var(--secondary)] text-[var(--text)] disabled:opacity-50 hover:bg-[var(--accent)] transition-colors"
                             >
                                 Weiter

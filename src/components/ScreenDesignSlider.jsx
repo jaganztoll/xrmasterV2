@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
@@ -87,12 +87,21 @@ const slides = [
 
 const ScreenDesignSlider = () => {
     const swiperRef = useRef(null);
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [swiperInstance, setSwiperInstance] = useState(null);
+
+    const handlePrev = () => swiperInstance?.slidePrev();
+    const handleNext = () => swiperInstance?.slideNext();
 
     return (
         <div className="max-w-6xl mx-auto px-4">
             <Swiper
                 modules={[Navigation]}
-                onSwiper={(swiper) => (swiperRef.current = swiper)}
+                onSwiper={(swiper) => {
+                    swiperRef.current = swiper;
+                    setSwiperInstance(swiper);
+                }}
+                onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
                 spaceBetween={40}
                 slidesPerView={1}
                 navigation={false}
@@ -103,7 +112,6 @@ const ScreenDesignSlider = () => {
                         <div>
                             <h2 className="text-2xl font-bold mb-4 text-center">{category}</h2>
                             <p className="mb-6 text-center text-lg max-w-xl mx-auto">{description}</p>
-                            {/* Icons Darstellung – zentriert & flexibel */}
                             <div className="flex flex-wrap justify-center gap-4">
                                 {images.map(({ src, title }, idx) => (
                                     <div
@@ -119,7 +127,6 @@ const ScreenDesignSlider = () => {
                                     </div>
                                 ))}
                             </div>
-
                         </div>
                     </SwiperSlide>
                 ))}
@@ -127,18 +134,18 @@ const ScreenDesignSlider = () => {
 
             <div className="flex justify-center gap-10 mt-6">
                 <button
-                    onClick={() => swiperRef.current?.slidePrev()}
-                    className="px-4 py-2 bg-[var(--secondary)] rounded-lg shadow hover:bg-[var(--accent)] cursor-pointer"
-                    aria-label="Vorheriges Slide"
+                    onClick={handlePrev}
+                    disabled={activeIndex === 0}
+                    className="px-6 py-2 rounded-lg bg-[var(--secondary)] text-[var(--text)] disabled:opacity-50 hover:bg-[var(--accent)] transition-colors"
                 >
-                    &larr; Zurück
+                    Zurück
                 </button>
                 <button
-                    onClick={() => swiperRef.current?.slideNext()}
-                    className="px-4 py-2 bg-[var(--secondary)] text-[var(--text)] rounded-lg shadow hover:bg-[var(--accent)] cursor-pointer"
-                    aria-label="Nächstes Slide"
+                    onClick={handleNext}
+                    disabled={activeIndex === slides.length - 1}
+                    className="px-6 py-2 rounded-lg bg-[var(--secondary)] text-[var(--text)] disabled:opacity-50 hover:bg-[var(--accent)] transition-colors"
                 >
-                    Weiter &rarr;
+                    Weiter
                 </button>
             </div>
         </div>
