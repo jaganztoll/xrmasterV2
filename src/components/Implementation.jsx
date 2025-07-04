@@ -61,16 +61,21 @@ const Implementation = () => {
                     title: 'Iterationsprozess',
                     slides: [
                         {
-                            title: 'Version 1–3',
-                            text: 'Schrittweise Überarbeitung der Panels, Farbwerte, Hover-Interaktionen und Layouts; Fokus lag auf Nutzerführung und Lesbarkeit.',
-                        },
-                        {
-                            title: 'Version 4',
-                            text: 'Finalisierung: dezente Panels, neue Farbgebung (Dark Mode Blau), Icons skaliert, Hover-Verhalten subtiler, ZDF-Orange als Feedback-Farbe.',
-                        },
-                        {
-                            title: 'Gestaltungsprinzipien',
-                            text: 'Nähe, Prägnanz, Konsistenz und Ähnlichkeit flossen systematisch in jede Iteration ein.',
+                            title: 'Iterationsprozess',
+                            texts: [
+                                {
+                                    subtitle: 'Version 1–3',
+                                    text: 'Schrittweise Überarbeitung der Panels, Farbwerte, Hover-Interaktionen und Layouts; Fokus lag auf Nutzerführung und Lesbarkeit.',
+                                },
+                                {
+                                    subtitle: 'Version 4',
+                                    text: 'Finalisierung: dezente Panels, neue Farbgebung (Dark Mode Blau), Icons skaliert, Hover-Verhalten subtiler, ZDF-Orange als Feedback-Farbe.',
+                                },
+                                {
+                                    subtitle: 'Gestaltungsprinzipien',
+                                    text: 'Nähe, Prägnanz, Konsistenz und Ähnlichkeit flossen systematisch in jede Iteration ein.',
+                                },
+                            ],
                         },
                     ],
                 },
@@ -166,81 +171,92 @@ const Implementation = () => {
 
     return (
         <section className="relative z-10 min-h-screen w-full">
-            <Element name="implementation" className="min-h-screen flex items-center justify-center py-16">
-                <div className="font-quicksand selection:bg-[var(--accent)] text-[var(--text)] px-8 relative z-10 w-full">
-                    <div className="bg-[var(--primary)] rounded-2xl px-6 py-8 max-w-6xl mx-auto shadow-lg backdrop-blur-sm">
-                        <motion.h2
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, ease: 'easeOut' }}
-                            viewport={{ once: true }}
-                            className="text-4xl font-semibold mb-8"
-                        >
-                            Entwicklung
-                        </motion.h2>
+            <Element
+                name="implementation"
+                className="w-full py-20 px-8 bg-[var(--background)] text-[var(--text)] font-quicksand selection:bg-[var(--accent)]"
+            >
+                <div className="max-w-6xl mx-auto w-full">
+                    <motion.h2
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, ease: 'easeOut' }}
+                        viewport={{ once: true }}
+                        className="text-4xl font-semibold mb-8"
+                    >
+                        Entwicklung
+                    </motion.h2>
 
-                        <div className="flex flex-wrap gap-4 mb-6">
-                            {topics.map(t => (
-                                <button
-                                    key={t.id}
-                                    onClick={() => setActiveTopic(t.id)}
-                                    className={`text-base px-4 py-2 rounded-xl font-medium transition-all duration-200 transform ${activeTopic === t.id ? 'bg-[var(--accent)] text-white shadow-md translate-y-[1px]' : 'bg-[var(--secondary)] text-[var(--text)] hover:shadow-sm hover:translate-y-[1px]'
-                                        }`}
-                                >
-                                    {t.title}
-                                </button>
-                            ))}
-                        </div>
-
-                        <div className="flex flex-wrap gap-3 mb-8">
-                            {currentTopic?.sections.map(section => (
-                                <button
-                                    key={section.id}
-                                    onClick={() => setActiveSection(section.id)}
-                                    className={`text-sm px-3 py-1 rounded-md border transition ${activeSection === section.id ? 'bg-[var(--accent)] text-white border-[var(--accent)]' : 'bg-[var(--secondary)] text-[var(--text)] hover:border-[var(--accent)]'
-                                        }`}
-                                >
-                                    {section.title}
-                                </button>
-                            ))}
-                        </div>
-
-                        {currentSlide && (
-                            <motion.div
-                                key={`${activeSection}-${slideIndex}`}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.4 }}
-                                className="bg-[var(--secondary)] p-6 rounded-xl shadow-sm space-y-6"
+                    <div className="flex flex-wrap gap-4 mb-6">
+                        {topics.map(t => (
+                            <button
+                                key={t.id}
+                                onClick={() => setActiveTopic(t.id)}
+                                className={`text-base px-4 py-2 rounded-xl font-medium transition-all duration-200 transform ${activeTopic === t.id ? 'bg-[var(--accent)] text-white shadow-md translate-y-[1px]' : 'bg-[var(--secondary)] text-[var(--text)] hover:shadow-sm hover:translate-y-[1px]'}`}
                             >
-                                <h3 className="text-2xl font-semibold">{currentSlide.title}</h3>
-                                {currentSlide.text && <p className="text-lg leading-relaxed">{currentSlide.text}</p>}
-                                {currentSlide.images?.length > 0 && (
-                                    <div className="flex flex-wrap justify-center gap-4">
-                                        {currentSlide.images.map((imgSrc, idx) => (
-                                            <div
-                                                key={idx}
-                                                className="bg-black/5 border border-black/10 rounded-lg p-2"
-                                                style={{ display: 'inline-block' }}
-                                            >
-                                                <img
-                                                    src={imgSrc}
-                                                    alt={`${currentSlide.title} Bild ${idx + 1}`}
-                                                    className="block"
-                                                    style={{
-                                                        maxWidth: '300px',
-                                                        maxHeight: '220px',
-                                                        objectFit: 'contain',
-                                                    }}
-                                                />
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-                            </motion.div>
-                        )}
+                                {t.title}
+                            </button>
+                        ))}
+                    </div>
 
-                        <div className="flex justify-between mt-8">
+                    <div className="flex flex-wrap gap-3 mb-8">
+                        {currentTopic?.sections.map(section => (
+                            <button
+                                key={section.id}
+                                onClick={() => setActiveSection(section.id)}
+                                className={`text-sm px-3 py-1 rounded-md border transition ${activeSection === section.id ? 'bg-[var(--accent)] text-white border-[var(--accent)]' : 'bg-[var(--secondary)] text-[var(--text)] hover:border-[var(--accent)]'}`}
+                            >
+                                {section.title}
+                            </button>
+                        ))}
+                    </div>
+
+                    {currentSlide && activeTopic === 'iteration' && activeSection === 'iteration' && currentSlide.texts ? (
+                        <motion.div
+                            key={`${activeSection}-iteration`}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.4 }}
+                            className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto"
+                        >
+                            {currentSlide.texts.map((item, idx) => (
+                                <div key={idx} className="bg-[var(--secondary)] p-6 rounded-xl shadow-md">
+                                    <h3 className="text-2xl font-semibold mb-3">{item.subtitle}</h3>
+                                    <p className="text-lg leading-relaxed">{item.text}</p>
+                                </div>
+                            ))}
+                        </motion.div>
+                    ) : currentSlide && (
+                        <motion.div
+                            key={`${activeSection}-${slideIndex}`}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.4 }}
+                            className={`bg-[var(--secondary)] p-6 rounded-xl shadow-sm space-y-6 ${!(activeTopic === 'iteration' && activeSection === 'iteration') ? 'text-center' : ''
+                                }`}
+                        >
+                            <h3 className="text-2xl font-semibold">{currentSlide.title}</h3>
+                            {currentSlide.text && <p className="text-lg leading-relaxed">{currentSlide.text}</p>}
+                            {currentSlide.images?.length > 0 && (
+                                <div className="flex flex-wrap justify-center gap-4">
+                                    {currentSlide.images.map((imgSrc, idx) => (
+                                        <div
+                                            key={idx}
+                                            className="bg-black/5 border border-black/10 rounded-lg p-2"
+                                        >
+                                            <img
+                                                src={imgSrc}
+                                                alt={`${currentSlide.title} Bild ${idx + 1}`}
+                                                className="block max-w-[300px] max-h-[220px] object-contain"
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </motion.div>
+                    )}
+
+                    {(activeSection !== 'iteration' || activeTopic !== 'iteration') && (
+                        <div className="flex justify-center gap-10 mt-6">
                             <button
                                 onClick={handlePrev}
                                 disabled={slideIndex === 0}
@@ -256,7 +272,7 @@ const Implementation = () => {
                                 Weiter
                             </button>
                         </div>
-                    </div>
+                    )}
                 </div>
             </Element>
         </section>
