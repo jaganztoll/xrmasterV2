@@ -10,7 +10,7 @@ const sections = [
       <>
         <p>Die Zukunft der Mediennutzung wandelt sich durch Mixed Reality (MR) grundlegend.</p>
         <p>Die ZDFmediathek als etabliertes Angebot soll intuitiv in MR erlebbar werden.</p>
-        <p>Im Fokus steht die neue Kategorie „Interaktiv“ für 3D-Modelle und 360° Medien.</p>
+        <p>Im Fokus steht die neue Kategorie „Interaktiv“ für 3D Modelle, 180° und 360° Medien.</p>
         <p>Ziel ist ein innovatives, immersives Nutzererlebnis mit intuitiver Interaktion.</p>
       </>
     ),
@@ -20,11 +20,12 @@ const sections = [
     title: 'Arbeitspakete',
     content: (
       <ul className="list-disc pl-6">
-        <li>Analyse bestehender Mediathek und Nutzerbedürfnisse</li>
+        <li>Analyse und heuristische Evaluation der bestehenden ZDFmediathek</li>
         <li>Definition funktionaler und nicht-funktionaler Anforderungen</li>
-        <li>Entwicklung eines Designkonzepts</li>
-        <li>Umsetzung eines High-Fidelity-Prototyps</li>
-        <li>Test, Evaluation und Dokumentation</li>
+        <li>Entwicklung eines Designkonzepts unter Berücksichtigung von Spatial UI und UX-Prinzipien</li>
+        <li>Iterative Umsetzung eines High-Fidelity-Prototyps mit kontinuierlicher Verfeinerung</li>
+        <li>Durchführung von Usability-Tests und technische Evaluationen während der Entwicklungsphase</li>
+        <li>Abschlussdokumentation mit Ergebnissen, Erkenntnissen und Ausblick auf zukünftige Entwicklungen</li>
       </ul>
     ),
   },

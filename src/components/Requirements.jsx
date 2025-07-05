@@ -18,46 +18,58 @@ const nonFunctionalRequirements = [
     { id: "NF-11", text: "Einheitliche Designelemente und Interaktionsmuster", priority: "Hoch" },
 ];
 
-
+const Card = ({ id, text, priority }) => (
+    <div className="bg-[var(--secondary)] p-6 rounded-2xl shadow-md hover:shadow-lg transition-shadow cursor-default text-left">
+        <div className="flex justify-between items-center mb-3">
+            <span className="font-semibold text-lg">{id}</span>
+            <span
+                className={`px-3 py-1 text-xs font-semibold rounded-full text-white ${priority === "Hoch" ? "bg-[var(--accent)]" : "bg-gray-500"
+                    }`}
+            >
+                {priority}
+            </span>
+        </div>
+        <p className="text-lg leading-relaxed">{text}</p>
+    </div>
+);
 
 const Requirements = () => {
     return (
         <section className="w-full py-20 px-8 bg-[var(--background)] text-[var(--text)] font-quicksand selection:bg-[var(--accent)]">
-            <Element name="requirements" className="h-[80vh] flex items-center justify-center">
-                <div className="max-w-6xl mx-auto">
+            <Element
+                name="requirements"
+                id="requirements-anchor"
+                style={{ paddingTop: '90px', marginTop: '-90px' }}
+            >                <div className="max-w-6xl mx-auto w-full">
                     <motion.div
                         initial={{ opacity: 0, y: 100 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.9, ease: "easeOut" }}
                         viewport={{ once: true }}
                     >
-                        <h2 className="text-4xl font-semibold mb-6">Anforderungen</h2>
-                        <p className="font-thin text-xl text-justify leading-[1.6] hyphens-auto mt-6 mb-12">
+                        <h2 className="text-4xl font-semibold mb-6 text-left">Anforderungen</h2>
+                        <p className="font-thin text-xl text-left leading-[1.6] hyphens-auto mb-12">
                             Für die Entwicklung der MR-Anwendung wurden funktionale und nicht-funktionale Anforderungen definiert. Der Fokus lag auf intuitiver Interaktion,
                             konsistentem Design, verschiedenen Eingabemethoden sowie Nutzerfreundlichkeit.
                         </p>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-lg">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
                             <div>
-                                <h3 className="text-2xl font-semibold mb-4">Funktionale Anforderungen</h3>
-                                <ul className="list-disc list-inside space-y-3">
+                                <h3 className="text-2xl font-semibold mb-6 border-b border-[var(--accent)] pb-2">Funktionale Anforderungen</h3>
+                                <div className="space-y-6">
                                     {functionalRequirements.map(({ id, text, priority }) => (
-                                        <li key={id}>
-                                            <span className="font-semibold">{id}:</span> {text} <span className="ml-2 px-2 py-0.5 text-xs bg-[var(--accent)] text-white rounded">{priority}</span>
-                                        </li>
+                                        <Card key={id} id={id} text={text} priority={priority} />
                                     ))}
-                                </ul>
+                                </div>
                             </div>
 
                             <div>
-                                <h3 className="text-2xl font-semibold mb-4">Nicht-funktionale Anforderungen</h3>
-                                <ul className="list-disc list-inside space-y-3">
+                                <h3 className="text-2xl font-semibold mb-6 border-b border-[var(--accent)] pb-2">Nicht-funktionale Anforderungen</h3>
+                                <div className="space-y-6">
                                     {nonFunctionalRequirements.map(({ id, text, priority }) => (
-                                        <li key={id}>
-                                            <span className="font-semibold">{id}:</span> {text} <span className="ml-2 px-2 py-0.5 text-xs bg-[var(--accent)] text-white rounded">{priority}</span>
-                                        </li>
+                                        <Card key={id} id={id} text={text} priority={priority} />
                                     ))}
-                                </ul>
+                                </div>
                             </div>
                         </div>
                     </motion.div>

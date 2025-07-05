@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Element } from 'react-scroll';
 import { motion } from 'framer-motion';
 import Brainstorm from '../assets/brainstorm.png';
+import Navigationsstruktur from '../assets/implementation/navigationsstruktur.png';
 
 import ConceptSlider from './ConceptSlider';
 import ScreenDesignSlider from './ScreenDesignSlider';
@@ -144,23 +145,36 @@ const Concept = () => {
             ) : activeTab === 'screendesign' ? (
               <ScreenDesignSlider />
             ) : (
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-6"
-              >
-                {activeContent?.items.map((item, index) => (
-                  <div
-                    key={index}
-                    className="bg-[var(--secondary)] dark:bg-[var(--secondary)] p-6 rounded-xl shadow-sm hover:shadow-md hover:translate-y-[1px] transition-all duration-200"
-                  >
-                    <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                    <p className="text-lg leading-relaxed">{item.text}</p>
+              <>
+                <motion.div
+                  key={activeTab}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                >
+                  {activeContent?.items.map((item, index) => (
+                    <div
+                      key={index}
+                      className="bg-[var(--secondary)] dark:bg-[var(--secondary)] p-6 rounded-xl shadow-sm hover:shadow-md hover:translate-y-[1px] transition-all duration-200"
+                    >
+                      <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                      <p className="text-lg leading-relaxed">{item.text}</p>
+                    </div>
+                  ))}
+                </motion.div>
+
+                {/* Image: Navigationsstruktur */}
+                {activeTab === 'navigation' && (
+                  <div className="mt-10 flex justify-center">
+                    <img
+                      src={Navigationsstruktur}
+                      alt="Navigationsstruktur"
+                      className="max-w-full max-h-[500px] rounded-lg shadow-md bg-[var(--secondary)]"
+                    />
                   </div>
-                ))}
-              </motion.div>
+                )}
+              </>
             )}
           </div>
         </div>

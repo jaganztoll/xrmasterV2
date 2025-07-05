@@ -49,6 +49,9 @@ import Mediensteuerung5 from '../assets/implementation/mediensteuerung5.png';
 import Mediensteuerung6 from '../assets/implementation/mediensteuerung6.png';
 
 import Navigationsstruktur from '../assets/implementation/navigationsstruktur.png';
+import Navigationsstruktur1 from '../assets/implementation/navigationsstruktur1.png';
+import Navigationsstruktur2 from '../assets/implementation/navigationsstruktur2.png';
+import Navigationsstruktur3 from '../assets/implementation/navigationsstruktur3.png';
 
 const topics = [
     {
@@ -130,24 +133,13 @@ const topics = [
         title: 'Navigationsstruktur & Interaktion',
         sections: [
             {
-                id: 'navi-struktur',
-                title: 'Vereinfachte Navigationsstruktur',
-                slides: [
-                    {
-                        title: 'Strukturübersicht',
-                        text: 'Schematische Darstellung der Navigationslogik anhand der vereinfachten Darstellung aus der Masterarbeit. Die Hauptpfade führen zu Mediathek, Interaktiven Inhalten und Live TV.',
-                        images: [Navigationsstruktur],
-                    },
-                ],
-            },
-            {
                 id: 'pfad-mediathek',
                 title: 'Beispielpfad: Mediathek – The Rookie',
                 slides: [
                     {
-                        title: 'Navigation durch eine Serie',
-                        text: 'Der Einstieg erfolgt über die Rubrikenseite. Nach Auswahl der Serie öffnet sich die Serienübersicht mit Staffelwahl. Die Folge wird im Vollbildmodus abgespielt, gesteuert über das Medienpanel.',
-                        images: [],
+                        title: 'Mediathek – The Rookie',
+                        text: '',
+                        images: [Navigationsstruktur1],
                     },
                 ],
             },
@@ -156,9 +148,9 @@ const topics = [
                 title: 'Beispielpfad: Interaktives TV – Der Mond',
                 slides: [
                     {
-                        title: 'Interaktive Navigation mit Zusatzseiten',
-                        text: 'Nach Start einer Folge kann über Cube-Icons auf 3D-Modelle oder Zusatzinhalte wie Faktenseiten verzweigt werden. Die nichtlineare Struktur erlaubt exploratives Navigieren.',
-                        images: [],
+                        title: 'Interaktiv TV – Der Mond & Der Mars',
+                        text: '',
+                        images: [Navigationsstruktur2],
                     },
                 ],
             },
@@ -167,9 +159,9 @@ const topics = [
                 title: 'Beispielpfad: Live TV – ZDFneo',
                 slides: [
                     {
-                        title: 'Lineare Navigation mit direktem Videostart',
-                        text: 'Live TV-Inhalte starten direkt im Vollbild. Die Navigation erfolgt über das Medienpanel. Ein Zurück-Button ermöglicht den Wechsel zurück in die Rubrikenübersicht.',
-                        images: [],
+                        title: 'Live TV – ZDFneo',
+                        text: '',
+                        images: [Navigationsstruktur3],
                     },
                 ],
             },
@@ -186,6 +178,9 @@ const Implementation = () => {
     const currentTopic = topics.find(t => t.id === activeTopic);
     const currentSection = currentTopic?.sections.find(s => s.id === activeSection);
     const currentSlide = currentSection?.slides[slideIndex];
+
+    const [lightboxOpen, setLightboxOpen] = useState(false);
+    const [lightboxImg, setLightboxImg] = useState('');
 
     // ⏱ Tab-Wechsel → Section-Reset
     useEffect(() => {
@@ -282,17 +277,36 @@ const Implementation = () => {
                             {currentSlide.images?.length > 0 && (
                                 <div className="flex flex-wrap justify-center gap-4">
                                     {currentSlide.images.map((imgSrc, idx) => (
-                                        <div key={idx} className="p-2">
+                                        <div
+                                            key={idx}
+                                            className="p-2 cursor-zoom-in transition-transform duration-200 hover:scale-[1.03]"
+                                            onClick={() => {
+                                                setLightboxImg(imgSrc);
+                                                setLightboxOpen(true);
+                                            }}
+                                        >
                                             <img
                                                 src={imgSrc}
                                                 alt={`${currentSlide.title} Bild ${idx + 1}`}
                                                 loading="eager"
-                                                className="block max-w-[300px] max-h-[220px] object-contain opacity-0 transition-opacity duration-500 will-change-opacity animate-fade-in"
+                                                className={`block object-contain rounded-md shadow-md ${['pfad-mediathek', 'pfad-interaktiv', 'pfad-livetv'].includes(activeSection)
+                                                    ? 'max-w-[1920px] max-h-[1080px]'
+                                                    : ['startseite'].includes(activeSection) ||
+                                                        (activeSection === 'uebersicht' &&
+                                                            ['Live TV', 'Sendung verpasst?', 'Serie', 'Dokumentation'].includes(currentSlide.title))
+                                                        ? 'max-w-[600px] max-h-[200px]'
+                                                        : activeSection === 'navi-struktur'
+                                                            ? 'max-w-[700px] max-h-[500px]'
+                                                            : 'max-w-[300px] max-h-[220px]'
+                                                    }`}
                                             />
+
+
                                         </div>
                                     ))}
                                 </div>
                             )}
+
                         </motion.div>
                     )}
 
@@ -316,6 +330,25 @@ const Implementation = () => {
                     )}
                 </div>
             </Element>
+            {lightboxOpen && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-[var(--secondary)] bg-opacity-80 backdrop-blur-sm"
+                    onClick={() => setLightboxOpen(false)}
+                >
+                    <img
+                        src={lightboxImg}
+                        alt="Vollbild"
+                        className="max-w-[80vw] max-h-[80vh] rounded-xl shadow-xl"
+                    />
+                    <button
+                        className="absolute top-6 right-6 text-white text-3xl font-bold"
+                        onClick={() => setLightboxOpen(false)}
+                    >
+                        ×
+                    </button>
+                </div>
+            )}
+
         </section>
     );
 };
