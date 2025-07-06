@@ -170,7 +170,7 @@ const Concept = () => {
                     <img
                       src={Navigationsstruktur}
                       alt="Navigationsstruktur"
-                      className="max-w-full max-h-[500px] rounded-lg shadow-md bg-[var(--secondary)]"
+                      className="max-w-full max-h-[500px] rounded-lg shadow-md bg-[var(--wireframes)]"
                     />
                   </div>
                 )}

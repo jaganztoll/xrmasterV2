@@ -3,7 +3,9 @@ import { motion } from 'framer-motion';
 import RealitySlider from './RealitySlider';
 import MixedRealityContent from './MixedRealityContent';
 import InteractionContent from './InteractionContent';
+import UXUIContent from './UXUIContent';
 import SpatialContent from './SpatialContent';
+import DesignPrinciplesContent from './DesignPrinciplesContent';
 
 const basicsSections = [
     {
@@ -23,24 +25,9 @@ const basicsSections = [
         content: <InteractionContent />,
     },
     {
-        id: 'user-experience',
-        title: 'User Experience',
-        content: (
-            <>
-                <p></p>
-                <p></p>
-            </>
-        ),
-    },
-    {
-        id: 'user-interface',
-        title: 'User Interface',
-        content: (
-            <>
-                <p></p>
-                <p></p>
-            </>
-        ),
+        id: 'ux-ui',
+        title: 'UX & UI',
+        content: <UXUIContent />
     },
     {
         id: 'spatial-ui',
@@ -50,12 +37,7 @@ const basicsSections = [
     {
         id: 'design-principles',
         title: 'Designprinzipien',
-        content: (
-            <>
-                <p></p>
-                <p></p>
-            </>
-        ),
+        content: <DesignPrinciplesContent />
     },
 ];
 

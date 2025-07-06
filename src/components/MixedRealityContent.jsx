@@ -100,7 +100,7 @@ const MixedRealityContent = () => {
                     >
                         {slides.map(({ img, alt, caption }, idx) => (
                             <SwiperSlide key={idx}>
-                                <img src={img} alt={alt} className="w-full h-auto rounded" />
+                                <img src={img} alt={alt} className="w-full h-auto rounded bg-[var(--wireframes)]" />
                                 <p className="mt-2 text-center text-lg text-gray-600">{caption}</p>
                             </SwiperSlide>
                         ))}

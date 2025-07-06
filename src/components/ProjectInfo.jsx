@@ -45,7 +45,7 @@ const sections = [
   },
   {
     id: 'prozess',
-    title: 'Designprozess',
+    title: 'Prozess',
     content: <ProcessContent />,
   },
 ];
