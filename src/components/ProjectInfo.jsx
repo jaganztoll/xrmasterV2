@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { Element } from 'react-scroll';
 import { motion } from 'framer-motion';
+import BasicsContent from './BasicsContent';
+import ProfessionalContent from './ProfessionalContent';
+import ProcessContent from './ProcessContent';
+
 
 const sections = [
   {
@@ -32,36 +36,17 @@ const sections = [
   {
     id: 'grundlagen',
     title: 'Grundlagen',
-    content: (
-      <>
-        <p>Abgrenzung zwischen VR, AR und MR.</p>
-        <p>Relevante Head-Mounted Displays und deren Features.</p>
-        <p>UX/UI Prinzipien für immersive Umgebungen.</p>
-        <p>Konzept der Spatial User Interfaces.</p>
-      </>
-    ),
+    content: <BasicsContent />,
   },
   {
     id: 'fachliche-betrachtung',
     title: 'Fachliche Betrachtung',
-    content: (
-      <>
-        <p>Herausforderungen beim MR-Design: Usability, Interaktion, Performance.</p>
-        <p>Erkenntnisse aus Literatur und eigener Evaluation.</p>
-        <p>Designprinzipien und Standards für MR-Anwendungen.</p>
-      </>
-    ),
+    content: <ProfessionalContent />,
   },
   {
     id: 'prozess',
     title: 'Prozess',
-    content: (
-      <>
-        <p>Design-Thinking Ablauf: Empathize, Define, Ideate, Prototype, Test.</p>
-        <p>Iterative Entwicklung mit integriertem Nutzerfeedback.</p>
-        <p>Besonderheiten und Herausforderungen bei MR-Projekten.</p>
-      </>
-    ),
+    content: <ProcessContent />,
   },
 ];
 
