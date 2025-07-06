@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import DesignThinking from '../assets/project-info/design-thinking1.png';
 
 const processSections = [
     {
@@ -11,7 +12,7 @@ const processSections = [
                     Der Design-Thinking-Prozess ist ein nutzerzentrierter und iterativer Ansatz mit fünf Phasen:
                 </p>
                 <img
-                    src="src/assets/project-info/design-thinking1.png"
+                    src={DesignThinking}
                     alt="Design Thinking Prozess"
                     className="w-full max-w-xl mb-6"
                 />
