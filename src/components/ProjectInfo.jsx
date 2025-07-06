@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Element } from 'react-scroll';
 import { motion } from 'framer-motion';
 import BasicsContent from './BasicsContent';
-import ProfessionalContent from './ProfessionalContent';
 import ProcessContent from './ProcessContent';
 
+import ArbeitspaketeImg from '../assets/project-info/arbeitspakete.png';
 
 const sections = [
   {
@@ -23,29 +23,32 @@ const sections = [
     id: 'arbeitspakete',
     title: 'Arbeitspakete',
     content: (
-      <ul className="list-disc pl-6">
-        <li>Analyse und heuristische Evaluation der bestehenden ZDFmediathek</li>
-        <li>Definition funktionaler und nicht-funktionaler Anforderungen</li>
-        <li>Entwicklung eines Designkonzepts unter Berücksichtigung von Spatial UI und UX-Prinzipien</li>
-        <li>Iterative Umsetzung eines High-Fidelity-Prototyps mit kontinuierlicher Verfeinerung</li>
-        <li>Durchführung von Usability-Tests und technische Evaluationen während der Entwicklungsphase</li>
-        <li>Abschlussdokumentation mit Ergebnissen, Erkenntnissen und Ausblick auf zukünftige Entwicklungen</li>
-      </ul>
+      <div className="flex flex-col gap-6">
+        <p className="mb-2">Die Arbeitspakete umfassten die folgenden Schritte:</p>
+        <img
+          src={ArbeitspaketeImg}
+          alt="Illustration der Arbeitspakete"
+          className="w-full max-w-xl mx-auto"
+        />
+        <ul className="list-disc pl-6 pt-4">
+          <li>Analyse und heuristische Evaluation der bestehenden ZDFmediathek</li>
+          <li>Definition funktionaler und nicht-funktionaler Anforderungen</li>
+          <li>Entwicklung eines Designkonzepts unter Berücksichtigung von Spatial UI und UX-Prinzipien</li>
+          <li>Iterative Umsetzung eines High-Fidelity-Prototyps mit kontinuierlicher Verfeinerung</li>
+          <li>Durchführung von Usability-Tests während der Entwicklungsphase</li>
+          <li>Abschlussdokumentation mit Ergebnissen, Erkenntnissen und Ausblick auf zukünftige Entwicklungen</li>
+        </ul>
+      </div>
     ),
-  },
-  {
-    id: 'grundlagen',
-    title: 'Grundlagen',
-    content: <BasicsContent />,
   },
   {
     id: 'fachliche-betrachtung',
     title: 'Fachliche Betrachtung',
-    content: <ProfessionalContent />,
+    content: <BasicsContent />,
   },
   {
     id: 'prozess',
-    title: 'Prozess',
+    title: 'Designprozess',
     content: <ProcessContent />,
   },
 ];

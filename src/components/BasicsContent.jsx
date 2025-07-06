@@ -7,19 +7,51 @@ const basicsSections = [
         title: 'VR / AR / MR',
         content: (
             <>
-                <p>Virtual Reality (VR) schließt die reale Umgebung komplett aus.</p>
-                <p>Augmented Reality (AR) ergänzt die reale Welt mit digitalen Inhalten.</p>
-                <p>Mixed Reality (MR) verschmilzt reale und virtuelle Welten interaktiv.</p>
+                <p></p>
+                <p></p>
+                <p></p>
             </>
         ),
     },
     {
-        id: 'ux-ui-principles',
-        title: 'UX/UI',
+        id: 'immersion',
+        title: 'Immersion & Präsenz',
         content: (
             <>
-                <p>Lesbarkeit, Sichtfeld und Interaktion sind zentral.</p>
-                <p>Spatial UI nutzt räumliche Positionierung und Gestensteuerung.</p>
+                <p></p>
+                <p></p>
+                <p></p>
+            </>
+        ),
+    },
+    {
+        id: 'interaction',
+        title: 'Interaktionen',
+        content: (
+            <>
+                <p></p>
+                <p></p>
+                <p></p>
+            </>
+        ),
+    },
+    {
+        id: 'user-experience',
+        title: 'User Experience',
+        content: (
+            <>
+                <p></p>
+                <p></p>
+            </>
+        ),
+    },
+    {
+        id: 'user-interface',
+        title: 'User Interface',
+        content: (
+            <>
+                <p></p>
+                <p></p>
             </>
         ),
     },
@@ -28,9 +60,19 @@ const basicsSections = [
         title: 'Spatial UI',
         content: (
             <>
-                <p>Positionierung von UI-Elementen im 3D-Raum ist entscheidend.</p>
-                <p>Ergonomie und Sichtfeld (30°-60° horizontal, 0°-35° vertikal) sind zu beachten.</p>
-                <p>Dynamische vs. fixierte Skalierung beeinflussen Wahrnehmung und Lesbarkeit.</p>
+                <p></p>
+                <p></p>
+                <p></p>
+            </>
+        ),
+    },
+    {
+        id: 'design-principles',
+        title: 'Designprinzipien',
+        content: (
+            <>
+                <p></p>
+                <p></p>
             </>
         ),
     },
