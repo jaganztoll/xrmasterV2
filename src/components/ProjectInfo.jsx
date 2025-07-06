@@ -8,16 +8,13 @@ import ArbeitspaketeImg from '../assets/project-info/arbeitspakete.png';
 
 const sections = [
   {
-    id: 'motivation',
-    title: 'Motivation',
+    id: 'hintergrund',
+    title: 'Hintergrund',
     content: (
-      <>
-        <p>Die Zukunft der Mediennutzung wandelt sich durch Mixed Reality (MR) grundlegend.</p>
-        <p>Die ZDFmediathek als etabliertes Angebot soll intuitiv in MR erlebbar werden.</p>
-        <p>Im Fokus steht die neue Kategorie „Interaktiv“ für 3D Modelle, 180° und 360° Medien.</p>
-        <p>Ziel ist ein innovatives, immersives Nutzererlebnis mit intuitiver Interaktion.</p>
-      </>
-    ),
+      <p>
+        Die Projektidee entstand im Austausch zwischen <strong>Rainer Kirchknopf</strong> (Innovation Office ZDF) und <strong>Prof. Dr. Robert Strzebkowski</strong>. Ziel war es, das Potenzial von <strong>Mixed Reality</strong> und <strong>Spatial User Interfaces</strong> für die ZDFmediathek zu erproben. Mit Blick auf bestehende <strong>360°-Formate</strong> und <strong>3D-Modelle</strong> sollte ein innovativer Prototyp entwickelt werden, der neue Formen der Mediennutzung ermöglicht.
+      </p>
+    )
   },
   {
     id: 'arbeitspakete',

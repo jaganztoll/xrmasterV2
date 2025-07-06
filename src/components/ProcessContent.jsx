@@ -26,8 +26,8 @@ const processSections = [
             <>
                 <p><strong>Nutzerbedürfnisse verstehen:</strong></p>
                 <ul className="list-disc pl-6 pt-2">
-                    <li>Analyse bestehender Funktionen und Einschränkungen, um Stärken, Schwächen und MR-Potenziale zu identifizieren.</li>
-                    <li>Konkurrenzanalyse von MR-Lösungen im Medienbereich und Lessons Learned.</li>
+                    <li>Analyse bestehender Funktionen und Einschränkungen, um Stärken, Schwächen und Ansatzpunkte für Mixed Reality zu identifizieren.</li>
+                    <li>Konkurrenzanalyse von bestehenden Mixed Reality Lösungen.</li>
                 </ul>
             </>
         ),

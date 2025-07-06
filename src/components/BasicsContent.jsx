@@ -1,39 +1,26 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import RealitySlider from './RealitySlider';
+import MixedRealityContent from './MixedRealityContent';
+import InteractionContent from './InteractionContent';
+import SpatialContent from './SpatialContent';
 
 const basicsSections = [
     {
         id: 'vr-ar-mr',
-        title: 'VR / AR / MR',
-        content: (
-            <>
-                <p></p>
-                <p></p>
-                <p></p>
-            </>
-        ),
+        title: 'VR, AR & MR',
+        content: <RealitySlider />,
     },
     {
-        id: 'immersion',
-        title: 'Immersion & Präsenz',
-        content: (
-            <>
-                <p></p>
-                <p></p>
-                <p></p>
-            </>
-        ),
+        id: 'mixed-reality',
+        title: 'Mixed Reality',
+        content: <MixedRealityContent />,
+
     },
     {
         id: 'interaction',
         title: 'Interaktionen',
-        content: (
-            <>
-                <p></p>
-                <p></p>
-                <p></p>
-            </>
-        ),
+        content: <InteractionContent />,
     },
     {
         id: 'user-experience',
@@ -58,13 +45,7 @@ const basicsSections = [
     {
         id: 'spatial-ui',
         title: 'Spatial UI',
-        content: (
-            <>
-                <p></p>
-                <p></p>
-                <p></p>
-            </>
-        ),
+        content: < SpatialContent />,
     },
     {
         id: 'design-principles',
