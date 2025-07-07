@@ -2,24 +2,52 @@ import React, { useState, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
-import rauschnabelImg from '../assets/project-info/rauschnabel.png';
-import milgramImg from '../assets/project-info/milgram.png';
+import Milgram from '../assets/project-info/milgram.png';
+import Farshid from '../assets/project-info/farshid.png';
+import Rauschnabel from '../assets/project-info/rauschnabel.png';
 
-const MixedRealityContent = () => {
-    const [activeTab, setActiveTab] = useState('definitionen');
+
+const tabs = [
+    { id: 'einleitung', label: 'Einleitung' },
+    { id: 'definitionen', label: 'Definitionen' },
+    { id: 'vergleich', label: 'Vergleich' },
+    { id: 'fazit', label: 'Fazit' },
+];
+
+const MixedRealityPresentation = () => {
+    const [activeTab, setActiveTab] = useState('einleitung');
     const swiperRef = useRef(null);
     const [activeIndex, setActiveIndex] = useState(0);
 
+    const tabClass = (id) =>
+        `pb-2 font-semibold whitespace-nowrap ${activeTab === id
+            ? 'border-b-2 border-[var(--accent)] text-[var(--accent)]'
+            : 'text-gray-600 hover:text-[var(--accent)]'
+        }`;
+
+    const handleTabChange = (id) => {
+        setActiveTab(id);
+        setActiveIndex(0);
+        if (swiperRef.current) {
+            swiperRef.current.slideTo(0);
+        }
+    };
+
     const slides = [
         {
-            img: rauschnabelImg,
-            alt: 'AR-VR Telepräsenz-Modell (Rauschnabel et al.)',
-            caption: 'AR-VR Telepräsenz-Modell (Rauschnabel et al.)',
-        },
-        {
-            img: milgramImg,
+            img: Milgram,
             alt: 'Reality-Virtuality-Kontinuum (Milgram et al.)',
             caption: 'Reality-Virtuality-Kontinuum (Milgram et al.)',
+        },
+        {
+            img: Farshid,
+            alt: 'Erweitertes RV-Kontinuum (Farshid et al.)',
+            caption: 'Erweitertes RV-Kontinuum (Farshid et al.)',
+        },
+        {
+            img: Rauschnabel,
+            alt: 'AR-VR Telepräsenz-Modell (Rauschnabel et al.)',
+            caption: 'AR-VR Telepräsenz-Modell (Rauschnabel et al.)',
         },
     ];
 
@@ -36,77 +64,72 @@ const MixedRealityContent = () => {
     };
 
     return (
-        <div>
-            {/* Tab Navigation */}
-            <nav className="flex gap-4 mb-6 border-b border-gray-300">
-                <button
-                    className={`pb-2 font-semibold ${activeTab === 'definitionen' ? 'border-b-2 border-[var(--accent)] text-[var(--accent)]' : 'text-gray-600 hover:text-[var(--accent)]'
-                        }`}
-                    onClick={() => setActiveTab('definitionen')}
-                    type="button"
-                >
-                    Definitionen & Modelle
-                </button>
-                <button
-                    className={`pb-2 font-semibold ${activeTab === 'visualisierung' ? 'border-b-2 border-[var(--accent)] text-[var(--accent)]' : 'text-gray-600 hover:text-[var(--accent)]'
-                        }`}
-                    onClick={() => setActiveTab('visualisierung')}
-                    type="button"
-                >
-                    Visualisierungen
-                </button>
-                <button
-                    className={`pb-2 font-semibold ${activeTab === 'vergleich' ? 'border-b-2 border-[var(--accent)] text-[var(--accent)]' : 'text-gray-600 hover:text-[var(--accent)]'
-                        }`}
-                    onClick={() => setActiveTab('vergleich')}
-                    type="button"
-                >
-                    Vergleich
-                </button>
-                <button
-                    className={`pb-2 font-semibold ${activeTab === 'fazit' ? 'border-b-2 border-[var(--accent)] text-[var(--accent)]' : 'text-gray-600 hover:text-[var(--accent)]'
-                        }`}
-                    onClick={() => setActiveTab('fazit')}
-                    type="button"
-                >
-                    Fazit
-                </button>
+        <div className="max-w-5xl mx-auto p-4">
+            {/* Navigation */}
+            <nav className="flex gap-6 mb-8 border-b border-gray-300">
+                {tabs.map(({ id, label }) => (
+                    <button
+                        key={id}
+                        type="button"
+                        onClick={() => handleTabChange(id)}
+                        className={tabClass(id)}
+                    >
+                        {label}
+                    </button>
+                ))}
             </nav>
 
-            {/* Content Sektionen */}
-            {activeTab === 'definitionen' && (
+            {/* Inhalte */}
+            {activeTab === 'einleitung' && (
                 <section>
-                    <h2 className="text-xl font-bold mb-4">Mixed Reality: Definitionen im Vergleich</h2>
-                    <p className="mb-6">
-                        Mixed Reality ist kein klar definierter Begriff. Die folgende Übersicht zeigt vier zentrale Definitionsansätze, ihre Merkmale und Abgrenzungen.
+                    <h2 className="text-2xl font-bold mb-4">Mixed Reality: Überblick</h2>
+                    <p className="mb-6 text-lg">
+                        Mixed Reality (MR) ist ein vielschichtiger Begriff ohne einheitliche Definition.
+                        Dieser Abschnitt stellt vier zentrale Definitionsansätze vor, darunter den klassischen von Milgram et al. (1994).
                     </p>
-                    <p className="mb-2 font-semibold">Klassische Modelle und Erweiterungen</p>
-                    <ul className="list-disc pl-6 mb-6">
-                        <li><strong>Milgram et al. (1994):</strong> Reality-Virtuality-Kontinuum mit AR und AV als Zwischenstufen.</li>
-                        <li><strong>Farshid et al.:</strong> Erweiterung um zusätzliche Realitätsformen & Unterscheidung real / virtuell.</li>
-                        <li><strong>Azuma:</strong> AR als Mittelfeld mit Fokus auf technische Merkmale (3D-Registrierung, Echtzeitinteraktion).</li>
-                        <li><strong>Rauschnabel et al.:</strong> Zwei getrennte Kontinua für AR und VR; MR als fortgeschrittene Form von AR.</li>
-                    </ul>
                 </section>
             )}
 
-            {activeTab === 'visualisierung' && (
-                <section className="max-w-md mx-auto">
+            {activeTab === 'definitionen' && (
+                <section>
+                    <h3 className="text-xl font-semibold mb-4">Wichtige MR-Definitionen</h3>
+                    <ul className="list-disc pl-6 space-y-3 text-lg mb-4">
+                        <li>
+                            <strong>Milgram et al. (1994):</strong> Reality-Virtuality-Kontinuum mit AR (reale Welt dominiert) und AV (virtuelle Welt dominiert).
+                        </li>
+                        <li>
+                            <strong>Farshid et al. (2020):</strong> Erweitertes Kontinuum mit 6 Realitätsformaten; MR als Verschmelzung realer und virtueller Elemente.
+                        </li>
+                        <li>
+                            <strong>Azuma (1997):</strong> AR als technisches System mit Echtzeit-Interaktivität und 3D-Registrierung.
+                        </li>
+                        <li>
+                            <strong>Rauschnabel et al. (2021):</strong> AR und VR als getrennte Kontinua; MR als fortgeschrittene Form von AR, definiert über lokale Präsenz.
+                        </li>
+                    </ul>
+
+                    {/* Bild-Slider */}
                     <Swiper
-                        spaceBetween={20}
+                        spaceBetween={30}
                         slidesPerView={1}
                         onSwiper={(swiper) => (swiperRef.current = swiper)}
                         onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+                        className="max-w-[600px] mx-auto"
                     >
                         {slides.map(({ img, alt, caption }, idx) => (
                             <SwiperSlide key={idx}>
-                                <img src={img} alt={alt} className="w-full h-auto rounded bg-[var(--wireframes)]" />
-                                <p className="mt-2 text-center text-lg text-gray-600">{caption}</p>
+                                <img
+                                    src={img}
+                                    alt={alt}
+                                    className="w-full rounded-xl object-contain shadow bg-[var(--wireframes)]"
+                                />
+                                <p className="mt-2 text-center text-sm text-gray-600">{caption}</p>
                             </SwiperSlide>
                         ))}
                     </Swiper>
 
-                    <div className="flex justify-center gap-6 mt-4">
+                    {/* Navigation Buttons */}
+                    <div className="flex justify-center gap-6 mt-6">
                         <button
                             onClick={handlePrev}
                             disabled={activeIndex === 0}
@@ -127,10 +150,10 @@ const MixedRealityContent = () => {
 
             {activeTab === 'vergleich' && (
                 <section className="overflow-x-auto mb-6">
-                    <p className="mb-2 font-semibold">2. Vergleich zentraler Merkmale</p>
-                    <table className="min-w-full text-sm border border-gray-300">
-                        <thead>
-                            <tr className="bg-gray-100">
+                    <h3 className="text-xl font-semibold mb-4">Gegenüberstellung der MR-Definitionen</h3>
+                    <table className="min-w-full border border-gray-300 text-sm">
+                        <thead className="bg-[var(--accent)]">
+                            <tr>
                                 <th className="p-2 border">Merkmal</th>
                                 <th className="p-2 border">Milgram</th>
                                 <th className="p-2 border">Farshid</th>
@@ -140,32 +163,32 @@ const MixedRealityContent = () => {
                         </thead>
                         <tbody>
                             <tr>
-                                <td className="p-2 border">Konzeptbasis</td>
-                                <td className="p-2 border">RV-Kontinuum</td>
-                                <td className="p-2 border">Erweitertes Kontinuum</td>
-                                <td className="p-2 border">AR = Mittelfeld</td>
-                                <td className="p-2 border">Zwei Kontinua</td>
+                                <td className="p-2 border font-semibold">Konzept</td>
+                                <td className="p-2 border">Reality-Virtuality-Kontinuum</td>
+                                <td className="p-2 border">Erweitertes Kontinuum (6 Realitätsformen)</td>
+                                <td className="p-2 border">AR als technisches Mittelfeld</td>
+                                <td className="p-2 border">Getrennte Kontinua für AR und VR</td>
                             </tr>
                             <tr>
-                                <td className="p-2 border">MR-Definition</td>
-                                <td className="p-2 border">Mischform</td>
-                                <td className="p-2 border">Verschmelzung</td>
-                                <td className="p-2 border">–</td>
-                                <td className="p-2 border">Form von AR</td>
+                                <td className="p-2 border font-semibold">MR Definition</td>
+                                <td className="p-2 border">Mischform von Realität und VR</td>
+                                <td className="p-2 border">Verschmelzung realer & virtueller Elemente</td>
+                                <td className="p-2 border">Nicht explizit definiert</td>
+                                <td className="p-2 border">Fortgeschrittene Form von AR</td>
                             </tr>
                             <tr>
-                                <td className="p-2 border">Stärken</td>
-                                <td className="p-2 border">Einfach</td>
-                                <td className="p-2 border">Umfassend</td>
-                                <td className="p-2 border">Technischer Fokus</td>
-                                <td className="p-2 border">Klare Trennung</td>
+                                <td className="p-2 border font-semibold">Stärken</td>
+                                <td className="p-2 border">Einfach und intuitiv</td>
+                                <td className="p-2 border">Umfassend und differenziert</td>
+                                <td className="p-2 border">Fokus auf technische Merkmale</td>
+                                <td className="p-2 border">Klare Trennung von AR und VR</td>
                             </tr>
                             <tr>
-                                <td className="p-2 border">Schwächen</td>
-                                <td className="p-2 border">Undifferenziert</td>
-                                <td className="p-2 border">Komplex</td>
-                                <td className="p-2 border">MR nicht konkret</td>
-                                <td className="p-2 border">MR ≠ AV?</td>
+                                <td className="p-2 border font-semibold">Schwächen</td>
+                                <td className="p-2 border">Wenig differenziert</td>
+                                <td className="p-2 border">Komplex und umfangreich</td>
+                                <td className="p-2 border">MR nicht konkret definiert</td>
+                                <td className="p-2 border">Eingeschränkte MR-Definition</td>
                             </tr>
                         </tbody>
                     </table>
@@ -173,9 +196,10 @@ const MixedRealityContent = () => {
             )}
 
             {activeTab === 'fazit' && (
-                <section>
-                    <p className="mb-4">
-                        Je nach Forschungsziel und technischer Umsetzung bietet sich ein anderer MR-Begriff an. Für diese Arbeit ist der Ansatz von <strong>Rauschnabel et al.</strong> aufgrund seiner Anwendungsnähe am überzeugendsten: Mixed Reality als maximale Ausprägung lokaler Präsenz innerhalb von AR.
+                <section className="max-w-3xl mx-auto px-4">
+                    <h3 className="text-xl font-semibold mb-4">Fazit</h3>
+                    <p className="text-lg">
+                        Für diese Arbeit wird der Ansatz von <strong>Rauschnabel et al.</strong> bevorzugt. Er schafft aus Anwendersicht klare Abgrenzungen zwischen AR und VR und definiert MR als höchste Ausprägung lokaler Präsenz innerhalb von AR.
                     </p>
                 </section>
             )}
@@ -183,4 +207,4 @@ const MixedRealityContent = () => {
     );
 };
 
-export default MixedRealityContent;
+export default MixedRealityPresentation;

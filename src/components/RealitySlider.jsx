@@ -55,7 +55,7 @@ const RealitySlider = () => {
                 {slides.map(({ title, image, description }) => (
                     <SwiperSlide key={title}>
                         <div className="flex flex-col items-start text-left">
-                            <img src={image} alt={title} className="w-full h-auto max-w-xl rounded mb-4" />
+                            <img src={image} alt={title} className="w-full h-auto max-w-xl rounded mb-4 bg-[var(--wireframes)]" />
                             <h2 className="font-semibold mb-4">{title}</h2>
                             <p>{description}</p>
                         </div>

@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 
+import AuswaehlenMeta from '../assets/project-info/auswaehlen-meta.gif';
+import ScrollenMeta from '../assets/project-info/scrollen-meta.gif';
+import TouchMeta from '../assets/project-info/touch-meta.gif';
+import DirekteEingabe from '../assets/project-info/direkte-eingabe.png';
+import IndirekteEingabe from '../assets/project-info/indirekte-eingabe.png';
+import DegreesOfFreedom from '../assets/project-info/degrees-of-freedom.jpg';
+
 const tabs = [
     { id: 'hand-tracking', label: 'Hand-Tracking' },
-    { id: 'gestensteuerung', label: 'Gesten-steuerung' },
+    { id: 'gestensteuerung', label: 'Gestensteuerung' },
     { id: 'voice-control', label: 'Voice-Control' },
     { id: 'head-tracking', label: 'Head-Tracking' },
     { id: 'eye-tracking', label: 'Eye-Tracking' },
@@ -12,31 +19,32 @@ const tabs = [
 const InteractionContent = () => {
     const [activeTab, setActiveTab] = useState(tabs[0].id);
 
+    const tabClass = (id) =>
+        `pb-2 font-semibold whitespace-nowrap ${activeTab === id
+            ? 'border-b-2 border-[var(--accent)] text-[var(--accent)]'
+            : 'text-gray-600 hover:text-[var(--accent)]'
+        }`;
+
     return (
         <div>
-            {/* Tab Navigation */}
-            <nav className="flex gap-4 mb-6 border-b border-gray-300">
+            <nav className="flex flex-wrap gap-4 mb-6 border-b border-gray-300">
                 {tabs.map(({ id, label }) => (
                     <button
                         key={id}
                         type="button"
                         onClick={() => setActiveTab(id)}
-                        className={`pb-2 font-semibold ${activeTab === id
-                            ? 'border-b-2 border-[var(--accent)] text-[var(--accent)]'
-                            : 'text-gray-600 hover:text-[var(--accent)]'
-                            }`}
+                        className={tabClass(id)}
                     >
                         {label}
                     </button>
                 ))}
             </nav>
 
-            {/* Content Sektionen */}
             {activeTab === 'hand-tracking' && (
                 <section>
                     <h2 className="text-xl font-bold mb-4">Hand-Tracking</h2>
                     <p className="mb-4">
-                        Hand-Tracking erfolgt über Inside-Out-Tracking (Sensoren im Headset) oder Outside-In-Tracking (externe Sensoren). Kameras und Tiefensensoren wie LiDAR erfassen Handbewegungen in Echtzeit und ermöglichen eine natürliche Interaktion in VR-Umgebungen.
+                        Hand-Tracking erfolgt über <strong>Inside-Out-Tracking</strong> (Sensoren im Headset) oder <strong>Outside-In-Tracking</strong> (externe Sensoren). Kameras und Tiefensensoren wie LiDAR erfassen Handbewegungen in Echtzeit und ermöglichen eine natürliche Interaktion in VR-Umgebungen.
                     </p>
                 </section>
             )}
@@ -45,8 +53,14 @@ const InteractionContent = () => {
                 <section>
                     <h2 className="text-xl font-bold mb-4">Gestensteuerung</h2>
                     <p className="mb-4">
-                        Die Meta Quest 3 unterstützt drei Gesten, davon zwei für Navigation: Auswählen (Zeigen mit zwei Fingern und Zusammenführen von Daumen und Zeigefinger) sowie Scrollen (Bewegen von zwei zusammengeführten Fingern). Diese Gesten ermöglichen intuitive Steuerung ohne zusätzliche Hardware.
+                        Die Meta Quest 3 unterstützt verschiedene Gesten, darunter zwei für Navigation:
+                        <strong> Auswählen</strong> (Zusammenführen von Daumen und Zeigefinger) und
+                        <strong> Scrollen</strong> (Ziehen mit zwei Fingern).
                     </p>
+                    <div className="grid gap-4 sm:grid-cols-2">
+                        <img src={AuswaehlenMeta} alt="Geste: Auswählen" className="rounded-xl shadow" />
+                        <img src={ScrollenMeta} alt="Geste: Scrollen" className="rounded-xl shadow" />
+                    </div>
                 </section>
             )}
 
@@ -54,7 +68,7 @@ const InteractionContent = () => {
                 <section>
                     <h2 className="text-xl font-bold mb-4">Voice-Control</h2>
                     <p className="mb-4">
-                        Sprachsteuerung wandelt Sprache mittels Speech-to-Text und Natural Language Processing in Steuerbefehle um. Die Erkennung erfolgt durch Verarbeitung von Sprachsignalen in Spektrogrammen, die von neuronalen Netzen klassifiziert werden.
+                        Sprachsteuerung wandelt Sprache mittels <strong>Speech-to-Text</strong> und <strong>Natural Language Processing</strong> in Steuerbefehle um. Die Erkennung erfolgt durch Verarbeitung von Sprachsignalen in <strong>Spektrogrammen</strong>, die von <strong>neuronalen Netzen</strong> klassifiziert werden.
                     </p>
                 </section>
             )}
@@ -63,8 +77,15 @@ const InteractionContent = () => {
                 <section>
                     <h2 className="text-xl font-bold mb-4">Head-Tracking</h2>
                     <p className="mb-4">
-                        Head-Tracking erfasst Kopfbewegungen mittels Sensoren und passt die virtuelle Perspektive in Echtzeit an. Es bildet die Grundlage für 3DoF und 6DoF Systeme, wobei moderne HMDs wie Meta Quest 3 Inside-Out-Tracking nutzen, um Bewegungsfreiheit im Raum zu ermöglichen. Geräte wie HoloLens 2 ergänzen dies um Head-Gaze-basierte Auswahlmechanismen.
+                        Head-Tracking erfasst Kopfbewegungen mittels Sensoren und passt die virtuelle Perspektive in Echtzeit an. Es bildet die Grundlage für <strong>3DoF</strong> und <strong>6DoF Systeme</strong>, wobei moderne HMDs wie Meta Quest 3 <strong>Inside-Out-Tracking</strong> nutzen, um Bewegungsfreiheit im Raum zu ermöglichen. Geräte wie HoloLens 2 ergänzen dies um Head-Gaze-basierte Auswahlmechanismen.
                     </p>
+                    <div className="flex justify-center">
+                        <img
+                            src={DegreesOfFreedom}
+                            alt="Degrees of Freedom: 3DoF & 6DoF"
+                            className="rounded-xl shadow w-[600px] max-w-full h-auto"
+                        />
+                    </div>
                 </section>
             )}
 
@@ -72,8 +93,13 @@ const InteractionContent = () => {
                 <section>
                     <h2 className="text-xl font-bold mb-4">Eye-Tracking</h2>
                     <p className="mb-4">
-                        Eye-Tracking erfasst die Blickrichtung über Kameras im Headset und ermöglicht die Analyse von Augenbewegungen wie Fixationen und Sakkaden. Gaze-Tracking verwendet diese Daten zur genauen Bestimmung des Blickpunkts. Bei der Apple Vision Pro ist Eye-Tracking mit Gesten oder Verweildauer als Eingabe kombiniert.
+                        Eye-Tracking erfasst die Blickrichtung über Kameras im Headset und ermöglicht die Analyse von Augenbewegungen wie <strong>Fixationen</strong> und <strong>Sakkaden</strong>. <strong>Gaze-Tracking</strong> verwendet diese Daten zur genauen Bestimmung des Blickpunkts. Bei der Apple Vision Pro ist Eye-Tracking mit Gesten oder Verweildauer als Eingabe kombiniert.
                     </p>
+                    <img
+                        src={IndirekteEingabe}
+                        alt="Blickgeste Vision Pro"
+                        className="rounded-xl shadow w-[600px] max-w-full h-auto"
+                    />
                 </section>
             )}
 
@@ -81,8 +107,12 @@ const InteractionContent = () => {
                 <section>
                     <h2 className="text-xl font-bold mb-4">Direct Manipulation</h2>
                     <p className="mb-4">
-                        Direct Manipulation bezeichnet die direkte und natürliche Steuerung von Objekten in der virtuellen Umgebung, z.B. durch Berührung oder Gesten. Meta Quest 3 unterstützt neben Gesten auch Direct-Touch, vergleichbar mit Touchpad-Bedienung.
+                        Direct Manipulation bezeichnet die direkte Steuerung von Objekten in der virtuellen Umgebung. Systeme wie die Meta Quest 3 ermöglichen <strong>Direct-Touch</strong> (z.B. Scrollen oder Klicken durch Fingergesten), ähnlich wie bei einem Touchpad.
                     </p>
+                    <div className="grid gap-4 sm:grid-cols-2">
+                        <img src={TouchMeta} alt="Direct Touch (Meta)" className="rounded-xl shadow" />
+                        <img src={DirekteEingabe} alt="Direkte Eingabe" className="rounded-xl shadow w-full h-45 object-cover" />
+                    </div>
                 </section>
             )}
         </div>

@@ -1,78 +1,120 @@
 import React, { useState } from 'react';
 
+import DynamischeSkalierung from '../assets/project-info/dynamische-skalierung.gif';
+import FixierteSkalierung from '../assets/project-info/fixierte-skalierung.gif';
+import OptimaleDistanz from '../assets/project-info/optimale-distanz.png';
+import VerankerungRaum from '../assets/project-info/verankerung-raum.gif';
+import VerankerungSichtfeld from '../assets/project-info/verankerung-sichtfeld.gif';
+import FieldOfView1 from '../assets/project-info/field-of-view.png';
+import FieldOfView2 from '../assets/project-info/field-of-view2.png';
+import AppIconsLayer from '../assets/project-info/app-icons-layer.png';
+import SchriftStaerken from '../assets/project-info/schrift-staerken.png';
+import AbgerundeteKanten from '../assets/project-info/abgerundete-kanten.jpg';
+import Farbakzente from '../assets/project-info/farbakzente.png';
+import Vibrancy from '../assets/project-info/vibrancy.png';
+
 const SpatialContent = () => {
-    const [activeTab, setActiveTab] = useState('grundlagen');
+    const [activeTab, setActiveTab] = useState('design');
+    const [slideIndex, setSlideIndex] = useState(0);
+
+    const handlePrev = () => setSlideIndex((prev) => Math.max(prev - 1, 0));
+    const handleNext = (length) => setSlideIndex((prev) => Math.min(prev + 1, length - 1));
+    const resetSlider = () => setSlideIndex(0);
+
+    const tabClass = (key) =>
+        `pb-2 font-semibold ${activeTab === key
+            ? 'border-b-2 border-[var(--accent)] text-[var(--accent)]'
+            : 'text-gray-600 hover:text-[var(--accent)]'}`;
+
+    const designMedia = [AppIconsLayer, SchriftStaerken, AbgerundeteKanten, Vibrancy, Farbakzente];
+    const platzierungMedia = [FieldOfView1, FieldOfView2, OptimaleDistanz];
+    const skalierungMedia = [DynamischeSkalierung, FixierteSkalierung, VerankerungRaum, VerankerungSichtfeld];
+
+    const currentMedia =
+        activeTab === 'design' ? designMedia :
+            activeTab === 'platzierung' ? platzierungMedia :
+                skalierungMedia;
 
     return (
         <div>
             <nav className="flex gap-4 mb-6 border-b border-gray-300">
-                <button
-                    type="button"
-                    className={`pb-2 font-semibold ${activeTab === 'grundlagen'
-                        ? 'border-b-2 border-[var(--accent)] text-[var(--accent)]'
-                        : 'text-gray-600 hover:text-[var(--accent)]'}`}
-                    onClick={() => setActiveTab('grundlagen')}
-                >
-                    Grundlagen
-                </button>
-                <button
-                    type="button"
-                    className={`pb-2 font-semibold ${activeTab === 'platzierung'
-                        ? 'border-b-2 border-[var(--accent)] text-[var(--accent)]'
-                        : 'text-gray-600 hover:text-[var(--accent)]'}`}
-                    onClick={() => setActiveTab('platzierung')}
-                >
-                    Platzierung
-                </button>
-                <button
-                    type="button"
-                    className={`pb-2 font-semibold ${activeTab === 'mapping-skalierung'
-                        ? 'border-b-2 border-[var(--accent)] text-[var(--accent)]'
-                        : 'text-gray-600 hover:text-[var(--accent)]'}`}
-                    onClick={() => setActiveTab('mapping-skalierung')}
-                >
-                    Mapping & Skalierung
-                </button>
+                {['design', 'platzierung', 'skalierung'].map((key) => (
+                    <button
+                        key={key}
+                        type="button"
+                        className={tabClass(key)}
+                        onClick={() => {
+                            setActiveTab(key);
+                            resetSlider();
+                        }}
+                    >
+                        {key === 'design' && 'Designprinzipien'}
+                        {key === 'platzierung' && 'Platzierung'}
+                        {key === 'skalierung' && 'Skalierung & Verankerung'}
+                    </button>
+                ))}
             </nav>
 
-            {activeTab === 'grundlagen' && (
+            {activeTab === 'design' && (
                 <section className="prose max-w-none">
-                    <h2 className="text-xl font-bold mb-4">Spatial UI Design</h2>
-                    <p>
-                        Spatial UIs integrieren Benutzeroberflächen in dreidimensionalen Raum, um natürliche Interaktionen zu ermöglichen. Apple Vision Pro nutzt eine eigene visuelle Sprache mit abgerundeten Kanten, mehrschichtigen Icons und Materialeffekten.
-                    </p>
-                    <p>
-                        Die Lesbarkeit wird durch angepasste Schriftgrößen und den Einsatz von Vibrancy-Modi sichergestellt.
-                    </p>
+                    <h2 className="text-xl font-bold mb-4">Designprinzipien in VisionOS</h2>
+                    <ul className="list-disc pl-6 mb-6">
+                        <li>Icons mit Tiefenwirkung durch mehrere Ebenen (Layering)</li>
+                        <li>Schriftstärken an räumliche Darstellung angepasst (z.B. Regular → Medium)</li>
+                        <li>Runde Formen statt scharfer Kanten zur visuellen Beruhigung</li>
+                        <li>Materialeffekte wie Vibrancy und Transparenz sorgen für klare Trennung und Integration</li>
+                        <li>Farben auf Glasmaterialien abgestimmt: Weiß für Text, Bunt nur flächig</li>
+                    </ul>
                 </section>
             )}
 
             {activeTab === 'platzierung' && (
                 <section className="prose max-w-none">
-                    <h2 className="text-xl font-bold mb-4">Platzierung</h2>
-                    <p>
-                        Inhalte sollten im Sichtfeld innerhalb von ca. 30° um das Zentrum angeordnet sein, um eine gute Sicht und Bedienbarkeit zu gewährleisten.
-                    </p>
-                    <p>
-                        Horizontale Kopfbewegungen sind besser für Interaktion geeignet, vertikale sollten minimiert werden. Objekte sollten 1,25 bis 5 Meter entfernt platziert werden.
-                    </p>
+                    <h2 className="text-xl font-bold mb-4">Ergonomische Platzierung</h2>
+                    <ul className="list-disc pl-6 mb-6">
+                        <li>Hauptinhalte innerhalb von ±30° horizontalem Sichtfeld</li>
+                        <li>Vertikale Blickbewegung auf max. 10° nach oben / 35° nach unten begrenzt</li>
+                        <li>Idealer Abstand zu UI-Elementen: 1,25–5 Meter</li>
+                    </ul>
                 </section>
             )}
 
-            {activeTab === 'mapping-skalierung' && (
+            {activeTab === 'skalierung' && (
                 <section className="prose max-w-none">
-                    <h2 className="text-xl font-bold mb-4">Spatial Mapping & Skalierung</h2>
-                    <p>
-                        Spatial Mapping erzeugt 3D-Modelle der Umgebung zur nahtlosen Einbettung virtueller Objekte.
-                    </p>
-                    <p>
-                        Skalierung kann dynamisch (automatische Anpassung an Entfernung) oder fixiert (natürliche Größenwirkung) sein.
-                    </p>
-                    <p>
-                        Objekte können im Blickfeld des Nutzers verankert oder an festen Punkten platziert werden.
-                    </p>
+                    <h2 className="text-xl font-bold mb-4">Skalierung & Verankerung</h2>
+                    <ul className="list-disc pl-6 mb-6">
+                        <li>Dynamische Skalierung: Text bleibt unabhängig vom Abstand lesbar</li>
+                        <li>Fixierte Skalierung: erzeugt realistisches Raumgefühl durch Perspektive</li>
+                        <li>Verankerung im Raum: UI folgt nicht der Kopfbewegung</li>
+                        <li>Verankerung im Sichtfeld: UI folgt der Kopfbewegung</li>
+                    </ul>
                 </section>
             )}
+
+            <div className="flex flex-col items-center mt-6">
+                <img
+                    src={currentMedia[slideIndex]}
+                    alt=""
+                    className="rounded-xl w-full max-w-md shadow"
+                />
+
+                <div className="flex justify-center gap-10 mt-6">
+                    <button
+                        onClick={handlePrev}
+                        disabled={slideIndex === 0}
+                        className="px-6 py-2 rounded-lg bg-[var(--secondary)] text-[var(--text)] disabled:opacity-50 hover:bg-[var(--accent)] transition-colors"
+                    >
+                        Zurück
+                    </button>
+                    <button
+                        onClick={() => handleNext(currentMedia.length)}
+                        disabled={slideIndex === currentMedia.length - 1}
+                        className="px-6 py-2 rounded-lg bg-[var(--secondary)] text-[var(--text)] disabled:opacity-50 hover:bg-[var(--accent)] transition-colors"
+                    >
+                        Weiter
+                    </button>
+                </div>
+            </div>
         </div>
     );
 };
