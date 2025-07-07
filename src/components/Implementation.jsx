@@ -48,7 +48,6 @@ import Mediensteuerung4 from '../assets/implementation/mediensteuerung4.png';
 import Mediensteuerung5 from '../assets/implementation/mediensteuerung5.png';
 import Mediensteuerung6 from '../assets/implementation/mediensteuerung6.png';
 
-import Navigationsstruktur from '../assets/implementation/navigationsstruktur.png';
 import Navigationsstruktur1 from '../assets/implementation/navigationsstruktur1.png';
 import Navigationsstruktur2 from '../assets/implementation/navigationsstruktur2.png';
 import Navigationsstruktur3 from '../assets/implementation/navigationsstruktur3.png';
@@ -170,6 +169,26 @@ const topics = [
 
 ];
 
+const LazyImage = ({ src, alt = '', className = '' }) => {
+    const [loaded, setLoaded] = useState(false);
+
+    return (
+        <div className="relative w-full max-w-full min-h-[100px]">
+            {!loaded && (
+                <div className="absolute inset-0 animate-pulse bg-gray-300 rounded-md" />
+            )}
+            <img
+                src={src}
+                alt={alt}
+                loading="lazy"
+                onLoad={() => setLoaded(true)}
+                className={`rounded-md shadow-md transition-opacity duration-300 object-contain ${loaded ? 'opacity-100' : 'opacity-0'} ${className}`}
+            />
+        </div>
+    );
+};
+
+
 const Implementation = () => {
     const [activeTopic, setActiveTopic] = useState('iteration');
     const [activeSection, setActiveSection] = useState('startseite');
@@ -230,7 +249,10 @@ const Implementation = () => {
                             <button
                                 key={t.id}
                                 onClick={() => setActiveTopic(t.id)}
-                                className={`text-xl px-4 py-2 rounded-xl font-medium transition-all duration-200 transform ${activeTopic === t.id ? 'bg-[var(--accent)] text-white shadow-md translate-y-[1px]' : 'bg-[var(--secondary)] text-[var(--text)] hover:shadow-sm hover:translate-y-[1px]'}`}
+                                className={`text-xl px-4 py-2 rounded-xl font-medium transition-all duration-200 transform ${activeTopic === t.id
+                                    ? 'bg-[var(--accent)] text-white shadow-md translate-y-[1px]'
+                                    : 'bg-[var(--secondary)] text-[var(--text)] hover:shadow-sm hover:translate-y-[1px]'
+                                    }`}
                             >
                                 {t.title}
                             </button>
@@ -242,7 +264,10 @@ const Implementation = () => {
                             <button
                                 key={section.id}
                                 onClick={() => setActiveSection(section.id)}
-                                className={`text-lg px-3 py-1 rounded-md border transition ${activeSection === section.id ? 'bg-[var(--accent)] text-white border-[var(--accent)]' : 'bg-[var(--secondary)] text-[var(--text)] hover:border-[var(--accent)]'}`}
+                                className={`text-lg px-3 py-1 rounded-md border transition ${activeSection === section.id
+                                    ? 'bg-[var(--accent)] text-white border-[var(--accent)]'
+                                    : 'bg-[var(--secondary)] text-[var(--text)] hover:border-[var(--accent)]'
+                                    }`}
                             >
                                 {section.title}
                             </button>
@@ -270,10 +295,11 @@ const Implementation = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.4 }}
-                            className={`bg-[var(--secondary)] p-6 rounded-xl shadow-sm space-y-6 text-center`}
+                            className="bg-[var(--secondary)] p-6 rounded-xl shadow-sm space-y-6 text-center"
                         >
                             <h3 className="text-2xl font-semibold">{currentSlide.title}</h3>
                             {currentSlide.text && <p className="text-lg leading-relaxed">{currentSlide.text}</p>}
+
                             {currentSlide.images?.length > 0 && (
                                 <div className="flex flex-wrap justify-center gap-4">
                                     {currentSlide.images.map((imgSrc, idx) => (
@@ -285,28 +311,25 @@ const Implementation = () => {
                                                 setLightboxOpen(true);
                                             }}
                                         >
-                                            <img
+                                            <LazyImage
                                                 src={imgSrc}
                                                 alt={`${currentSlide.title} Bild ${idx + 1}`}
-                                                loading="eager"
-                                                className={`block object-contain rounded-md shadow-md ${['pfad-mediathek', 'pfad-interaktiv', 'pfad-livetv'].includes(activeSection)
-                                                    ? 'max-w-[1920px] max-h-[1080px]'
-                                                    : ['startseite'].includes(activeSection) ||
-                                                        (activeSection === 'uebersicht' &&
-                                                            ['Live TV', 'Sendung verpasst?', 'Serie', 'Dokumentation'].includes(currentSlide.title))
-                                                        ? 'max-w-[600px] max-h-[200px]'
-                                                        : activeSection === 'navi-struktur'
-                                                            ? 'max-w-[700px] max-h-[500px]'
-                                                            : 'max-w-[300px] max-h-[220px]'
-                                                    }`}
+                                                className={
+                                                    ['pfad-mediathek', 'pfad-interaktiv', 'pfad-livetv'].includes(activeSection)
+                                                        ? 'max-w-[1920px] max-h-[1080px]'
+                                                        : ['startseite'].includes(activeSection) ||
+                                                            (activeSection === 'uebersicht' &&
+                                                                ['Live TV', 'Sendung verpasst?', 'Serie', 'Dokumentation'].includes(currentSlide.title))
+                                                            ? 'max-w-[600px] max-h-[200px]'
+                                                            : activeSection === 'navi-struktur'
+                                                                ? 'max-w-[700px] max-h-[500px]'
+                                                                : 'max-w-[300px] max-h-[220px]'
+                                                }
                                             />
-
-
                                         </div>
                                     ))}
                                 </div>
                             )}
-
                         </motion.div>
                     )}
 
@@ -348,9 +371,9 @@ const Implementation = () => {
                     </button>
                 </div>
             )}
-
         </section>
     );
+
 };
 
 export default Implementation;

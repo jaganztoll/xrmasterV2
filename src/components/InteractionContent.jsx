@@ -16,6 +16,23 @@ const tabs = [
     { id: 'direct-manipulation', label: 'Direct Manipulation' },
 ];
 
+const LazyImage = ({ src, alt, className = '' }) => {
+    const [loaded, setLoaded] = useState(false);
+
+    return (
+        <div className="relative bg-[var(--wireframes)] rounded-xl overflow-hidden min-h-[200px]">
+            {!loaded && <div className="absolute inset-0 bg-gray-300 animate-pulse z-0" />}
+            <img
+                src={src}
+                alt={alt}
+                loading="lazy"
+                onLoad={() => setLoaded(true)}
+                className={`relative z-10 w-full h-auto transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'} ${className}`}
+            />
+        </div>
+    );
+};
+
 const InteractionContent = () => {
     const [activeTab, setActiveTab] = useState(tabs[0].id);
 
@@ -58,8 +75,8 @@ const InteractionContent = () => {
                         <strong> Scrollen</strong> (Ziehen mit zwei Fingern).
                     </p>
                     <div className="grid gap-4 sm:grid-cols-2">
-                        <img src={AuswaehlenMeta} alt="Geste: Auswählen" className="rounded-xl shadow" />
-                        <img src={ScrollenMeta} alt="Geste: Scrollen" className="rounded-xl shadow" />
+                        <LazyImage src={AuswaehlenMeta} alt="Geste: Auswählen" />
+                        <LazyImage src={ScrollenMeta} alt="Geste: Scrollen" />
                     </div>
                 </section>
             )}
@@ -80,10 +97,10 @@ const InteractionContent = () => {
                         Head-Tracking erfasst Kopfbewegungen mittels Sensoren und passt die virtuelle Perspektive in Echtzeit an. Es bildet die Grundlage für <strong>3DoF</strong> und <strong>6DoF Systeme</strong>, wobei moderne HMDs wie Meta Quest 3 <strong>Inside-Out-Tracking</strong> nutzen, um Bewegungsfreiheit im Raum zu ermöglichen. Geräte wie HoloLens 2 ergänzen dies um Head-Gaze-basierte Auswahlmechanismen.
                     </p>
                     <div className="flex justify-center">
-                        <img
+                        <LazyImage
                             src={DegreesOfFreedom}
                             alt="Degrees of Freedom: 3DoF & 6DoF"
-                            className="rounded-xl shadow w-[600px] max-w-full h-auto"
+                            className="w-[600px] max-w-full h-auto"
                         />
                     </div>
                 </section>
@@ -95,10 +112,10 @@ const InteractionContent = () => {
                     <p className="mb-4">
                         Eye-Tracking erfasst die Blickrichtung über Kameras im Headset und ermöglicht die Analyse von Augenbewegungen wie <strong>Fixationen</strong> und <strong>Sakkaden</strong>. <strong>Gaze-Tracking</strong> verwendet diese Daten zur genauen Bestimmung des Blickpunkts. Bei der Apple Vision Pro ist Eye-Tracking mit Gesten oder Verweildauer als Eingabe kombiniert.
                     </p>
-                    <img
+                    <LazyImage
                         src={IndirekteEingabe}
                         alt="Blickgeste Vision Pro"
-                        className="rounded-xl shadow w-[600px] max-w-full h-auto"
+                        className="w-[600px] max-w-full h-auto"
                     />
                 </section>
             )}
@@ -110,8 +127,12 @@ const InteractionContent = () => {
                         Direct Manipulation bezeichnet die direkte Steuerung von Objekten in der virtuellen Umgebung. Systeme wie die Meta Quest 3 ermöglichen <strong>Direct-Touch</strong> (z.B. Scrollen oder Klicken durch Fingergesten), ähnlich wie bei einem Touchpad.
                     </p>
                     <div className="grid gap-4 sm:grid-cols-2">
-                        <img src={TouchMeta} alt="Direct Touch (Meta)" className="rounded-xl shadow" />
-                        <img src={DirekteEingabe} alt="Direkte Eingabe" className="rounded-xl shadow w-full h-45 object-cover" />
+                        <LazyImage src={TouchMeta} alt="Direct Touch (Meta)" />
+                        <LazyImage
+                            src={DirekteEingabe}
+                            alt="Direkte Eingabe"
+                            className="w-full h-45 object-cover"
+                        />
                     </div>
                 </section>
             )}

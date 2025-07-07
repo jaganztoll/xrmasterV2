@@ -63,6 +63,9 @@ const MixedRealityPresentation = () => {
         }
     };
 
+    const [loaded, setLoaded] = useState(Array(slides.length).fill(false));
+
+
     return (
         <div className="max-w-5xl mx-auto p-4">
             {/* Navigation */}
@@ -118,12 +121,26 @@ const MixedRealityPresentation = () => {
                     >
                         {slides.map(({ img, alt, caption }, idx) => (
                             <SwiperSlide key={idx}>
-                                <img
-                                    src={img}
-                                    alt={alt}
-                                    className="w-full rounded-xl object-contain shadow bg-[var(--wireframes)]"
-                                />
+                                <div className="relative min-h-[300px] bg-[var(--wireframes)] rounded-xl overflow-hidden">
+                                    {!loaded[idx] && (
+                                        <div className="absolute inset-0 bg-gray-300 animate-pulse z-0 rounded-xl" />
+                                    )}
+                                    <img
+                                        src={img}
+                                        alt={alt}
+                                        loading="lazy"
+                                        onLoad={() => {
+                                            setLoaded((prev) => {
+                                                const updated = [...prev];
+                                                updated[idx] = true;
+                                                return updated;
+                                            });
+                                        }}
+                                        className={`relative z-10 w-full h-auto object-contain transition-opacity duration-300 ${loaded[idx] ? 'opacity-100' : 'opacity-0'}`}
+                                    />
+                                </div>
                                 <p className="mt-2 text-center text-sm text-gray-600">{caption}</p>
+
                             </SwiperSlide>
                         ))}
                     </Swiper>

@@ -13,6 +13,26 @@ import AbgerundeteKanten from '../assets/project-info/abgerundete-kanten.jpg';
 import Farbakzente from '../assets/project-info/farbakzente.png';
 import Vibrancy from '../assets/project-info/vibrancy.png';
 
+// 🔧 LazyImage mit Fade-In und Skeleton
+const LazyImage = ({ src, alt = '', className = '' }) => {
+    const [loaded, setLoaded] = useState(false);
+
+    return (
+        <div className="relative w-full max-w-md min-h-[200px] rounded-xl overflow-hidden">
+            {!loaded && (
+                <div className="absolute inset-0 animate-pulse z-0" />
+            )}
+            <img
+                src={src}
+                alt={alt}
+                loading="lazy"
+                onLoad={() => setLoaded(true)}
+                className={`relative z-10 w-full h-auto rounded-xl shadow transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'} ${className}`}
+            />
+        </div>
+    );
+};
+
 const SpatialContent = () => {
     const [activeTab, setActiveTab] = useState('design');
     const [slideIndex, setSlideIndex] = useState(0);
@@ -92,10 +112,9 @@ const SpatialContent = () => {
             )}
 
             <div className="flex flex-col items-center mt-6">
-                <img
+                <LazyImage
                     src={currentMedia[slideIndex]}
-                    alt=""
-                    className="rounded-xl w-full max-w-md shadow"
+                    alt={`Slide ${slideIndex + 1}`}
                 />
 
                 <div className="flex justify-center gap-10 mt-6">

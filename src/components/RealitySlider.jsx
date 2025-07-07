@@ -31,6 +31,7 @@ const slides = [
 const RealitySlider = () => {
     const swiperRef = useRef();
     const [activeIndex, setActiveIndex] = useState(0);
+    const [loaded, setLoaded] = useState(false);
 
     const handleNext = () => {
         if (swiperRef.current && activeIndex < slides.length - 1) {
@@ -54,8 +55,19 @@ const RealitySlider = () => {
             >
                 {slides.map(({ title, image, description }) => (
                     <SwiperSlide key={title}>
-                        <div className="flex flex-col items-start text-left">
-                            <img src={image} alt={title} className="w-full h-auto max-w-xl rounded mb-4 bg-[var(--wireframes)]" />
+                        <div className="flex flex-col items-start text-left w-full max-w-xl">
+                            <div className="w-full min-h-[250px] bg-[var(--wireframes)] rounded mb-4 relative overflow-hidden">
+                                {!loaded && (
+                                    <div className="absolute inset-0 bg-gray-300 animate-pulse z-0" />
+                                )}
+                                <img
+                                    src={image}
+                                    alt={title}
+                                    loading="lazy"
+                                    onLoad={() => setLoaded(true)}
+                                    className={`w-full h-auto relative z-10 transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+                                />
+                            </div>
                             <h2 className="font-semibold mb-4">{title}</h2>
                             <p>{description}</p>
                         </div>
