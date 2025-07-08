@@ -32,7 +32,7 @@ const basicsSections = [
     {
         id: 'spatial-ui',
         title: 'Spatial UI',
-        content: < SpatialContent />,
+        content: <SpatialContent />,
     },
     {
         id: 'design-principles',

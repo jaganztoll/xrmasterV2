@@ -12,19 +12,19 @@ const slides = [
         title: 'Virtual Reality (VR)',
         image: VR,
         description:
-            'Vollständig virtuelle Umgebung, die die reale Welt komplett ersetzt. Nutzer tauchen mithilfe von Headsets in digitale Welten ein.',
+            'Vollständig virtuelle Umgebung, die die reale Welt komplett ersetzt.',
     },
     {
         title: 'Augmented Reality (AR)',
         image: AR,
         description:
-            'Erweiterung der realen Welt durch virtuelle Inhalte. Die reale Umgebung bleibt dominant, digitale Elemente ergänzen sie kontextbezogen.',
+            'Reale Umgebung bleibt dominant, digitale Elemente erweitern sie kontextbezogen.',
     },
     {
         title: 'Mixed Reality (MR)',
         image: MR,
         description:
-            'Verschmelzung von realer und virtueller Welt. Interaktive, ortsbezogene Einbindung virtueller Objekte in die reale Umgebung.',
+            'Immersive Form von AR mit nahtloser Verschmelzung von real und virtuell.',
     },
 ];
 

@@ -66,15 +66,15 @@ const topics = [
                         texts: [
                             {
                                 subtitle: 'Version 1–3',
-                                text: 'Schrittweise Überarbeitung der Panels, Farbwerte, Hover-Interaktionen und Layouts; Fokus lag auf Nutzerführung und Lesbarkeit.',
+                                text: 'Panels, Farben, Hover-Effekte und Layout wurden schrittweise überarbeitet. Fokus lag auf Nutzerführung und Lesbarkeit.',
                             },
                             {
                                 subtitle: 'Version 4',
-                                text: 'Finalisierung: dezente Panels, neue Farbgebung (Dark Mode Blau), Icons skaliert, Hover-Verhalten subtiler, ZDF-Orange als Feedback-Farbe.',
+                                text: 'Finales Design mit dezenten Panels, neuem Dark-Mode-Blau, skalierten Icons und ZDF-Orange als Feedback-Farbe',
                             },
                             {
                                 subtitle: 'Gestaltungsprinzipien',
-                                text: 'Nähe, Prägnanz, Konsistenz und Ähnlichkeit flossen systematisch in jede Iteration ein.',
+                                text: 'Nähe, Prägnanz, Konsistenz und Ähnlichkeit wurden systematisch angewendet.',
                             },
                         ],
                     },
@@ -84,47 +84,106 @@ const topics = [
                 id: 'startseite',
                 title: 'Startseite',
                 slides: [
-                    { title: 'Startseite', text: 'Frühere Versionen nutzten kontrastreiche Icons mit ZDF-Orange als visuelles Feedback. In Version 4 wurden die Icons im Dark Mode bewusst zurückgenommen, um die visuelle Hierarchie zu stärken. Zudem wurde die Hintergrundfarbe im Dark Mode angepasst, um näher an der bestehenden Mediathek zu bleiben und einen moderneren, hochwertigeren Eindruck zu vermitteln. Das ZDF Logo unterstützt zusätzlich die Markenwahrnehmung.', images: [Startseite1, Startseite2] },
+                    {
+                        title: 'Startseite',
+                        text: 'Frühere Versionen zeigten kontrastreiche Icons in ZDF-Orange. Version 4 reduzierte Icons im Dark Mode für bessere Hierarchie und passte die Hintergrundfarbe für einen moderneren Look an. Das ZDF-Logo stärkt die Markenwahrnehmung.',
+                        images: [Startseite1, Startseite2],
+                    },
                 ],
             },
             {
                 id: 'navi',
                 title: 'Navigationspanels',
                 slides: [
-                    { title: 'Navigationspanels', text: 'Die Navigationspanels zählten zu den gestalterisch anspruchsvollen UI-Elementen und wurden im Verlauf der Iterationen mit am stärksten überarbeitet. Besonders die Differenzierung zwischen inaktivem und aktivem Zustand stelle eine zentrale Herausforderung dar und erforderte mehrere gestalterische Anpassungen, um ein ausgewogenes Verhältnis zwischen Zurückhaltung und klarer Interaktion zu erreichen.' },
-                    { title: 'Version 1', text: 'In der ersten Version waren die Navigationspanels ständig sichtbar und sollten durch erhöhte Transparenz im inaktiven Zustand weniger dominant wirken. Dies führte jedoch zu Problemen der Auffindbarkeit. Im Hover-Zustand vergrößerten sich die Icons leicht und wechselten die Farbe zu ZDF-Orange.', images: [Navigationspanel13, Navigationspanel14, Navigationspanel15, Navigationspanel16] },
-                    { title: 'Version 2', text: 'In der zweiten Version wurde auf Transparenz verzichtet, da die schemenhafte Darstellung im peripheren Sichtfeld eher ablenkend wirkte. Größe und Farbe der Icons blieben gleich, neu war jedoch die seitliche Erweiterung im Hover-Zustand, wodurch erstmals Beschriftugngen eingeblendet wurden.', images: [Navigationspanel2, Navigationspanel3, Navigationspanel8] },
-                    { title: 'Version 3', text: 'In der dritten Version wurde der Standardzustand und der Öffnungsmechanismus angepasst: Die Panels öffneten sich nun symmetrisch von der Mitte aus, was die Hand-Tracking-Navigation präziser und fehlerärmer machte. Gleichzeitig kam es zu einer leichten Überlagerung mit dem Hauptscreen.', images: [Navigationspanel6, Navigationspanel4] },
-                    { title: 'Version 4', text: 'In der vierten Version wurden die Panels breiter, aber in der Höhe reduziert. Die Icons wurden insgesamt verkleinert, wordurch der Abstand zum Seitenrand wuchs. Das unterstützt das Gesetz der Nähe durch stärkere visuelle Trennung. Neu hinzu kame ein Glühlampen-Icon zur Steuerung der Hintergrundbeleuchtung. Die Beschriftungen wurden nun im Hover-Zustand unter dem Icon eingeblendet.', images: [Navigationspanel9, Navigationspanel10, Navigationspanel11, Navigationspanel5, Navigationspanel17, Navigationspanel18] },
+                    {
+                        title: 'Navigationspanels',
+                        text: 'Eines der komplexesten UI-Elemente, mit Fokus auf klare Abgrenzung zwischen aktivem und inaktivem Zustand.',
+                    },
+                    {
+                        title: 'Version 1',
+                        text: 'Panels immer sichtbar, inaktiv transparent – führte zu Auffindbarkeitsproblemen. Hover vergrößert Icons und färbt sie ZDF-Orange.',
+                        images: [Navigationspanel13, Navigationspanel14, Navigationspanel15, Navigationspanel16],
+                    },
+                    {
+                        title: 'Version 2',
+                        text: 'Keine Transparenz mehr, da ablenkend. Icons blieben gleich, Hover erweitert Panel seitlich und zeigt Beschriftungen.',
+                        images: [Navigationspanel2, Navigationspanel3, Navigationspanel8],
+                    },
+                    {
+                        title: 'Version 3',
+                        text: 'Panels öffnen sich symmetrisch von der Mitte, verbessert Hand-Tracking und verursachte leichte Überlagerung mit Hauptscreen.',
+                        images: [Navigationspanel6, Navigationspanel4],
+                    },
+                    {
+                        title: 'Version 4',
+                        text: 'Panels breiter, aber kürzer; Icons kleiner, größerer Abstand zum Rand. Neu: Glühlampen-Icon für Hintergrundbeleuchtung, Beschriftungen im Hover sichtbar.',
+                        images: [Navigationspanel9, Navigationspanel10, Navigationspanel11, Navigationspanel5, Navigationspanel17, Navigationspanel18],
+                    },
                 ],
             },
             {
                 id: 'rubriken',
                 title: 'Rubrikauswahl',
                 slides: [
-                    { title: 'Rubrikenauswahl', text: 'In Version 4 wurden die Rubriken Kacheln durch Bilder ersetzt, was die visuelle Orientierung verbessert. Die Gruppierung folgt dem Gesetz der Nähe, der Hintergrund greift Bühne und Überschrift auf und schafft Konsistenz. Statt einer Farbfüllung im Hover-Zustand sorgt nun eine dezente Umrandung mit leichter innerer Vergrößerung für elegantes, prägnantes Feedback.', images: [RubrikenDarkV1, RubrikenDarkV4, RubrikenLightV1, RubrikenLightV4] },
+                    {
+                        title: 'Rubrikenauswahl',
+                        text: 'Version 4 ersetzt Kacheln durch Bilder zur besseren Orientierung. Die Gruppierung folgt dem Nähegesetz, der Hintergrund schafft Konsistenz. Hover zeigt eine dezente Umrandung mit leichter Vergrößerung als Feedback.',
+                        images: [RubrikenDarkV1, RubrikenDarkV4, RubrikenLightV1, RubrikenLightV4],
+                    },
                 ],
             },
             {
                 id: 'uebersicht',
                 title: 'Übersichtsseiten',
                 slides: [
-                    { title: 'Hauptübersicht', text: 'Die Hauptübersicht wurde in Version 4 durch eine Bühne L erweitert, um aktuelle Highlights hervorzuheben. Diese bewusste Abweichung vom übrigen Seitenaufbau fördert die Orientierung und macht den Einstiegspunkt sofort erkennbar.', images: [Uebersicht5, Uebersicht6] },
-                    { title: 'Serien & Interaktiv', text: 'Ein neues Plakat-Clusterband ergänzt die visuelle Struktur. Der Hover-Effekt wurde überarbeitet: Statt Kachelvergrößerung vergrößert sich nur noch der Inhalt leicht, begleitet von einer farbigen Umrandung.', images: [Uebersicht1, Uebersicht2, Uebersicht3, Uebersicht4] },
-                    { title: 'Live TV', text: 'Die Darstellung von Live-Inhalten wurde vereinheitlicht: Videos starten nun direkt im Vollbildmodus. Der separate Vollbild-Button entfällt, stattdessen wurde ein Zurück-Pfeil integriert. Diese Änderung sorgt für ein konsistenteres Nutzererlebnis im Vergleich zu vorherigen Versionen.', images: [Uebersicht7, Uebersicht8] },
-                    { title: 'Sendung verpasst?', text: 'Die Rubrik "Sendung verpasst?" blieb strukturell erhalten, erhielt jedoch eine optimierte Zeitnavigation. Die aktuell ausgewählte Tageszeit bleibt nun bei Hover durch eine farbige Hinterlegung hervorgehoben.', images: [Uebersicht9, Uebersicht10] },
-                    { title: 'Serie', text: 'Die Serienübersicht wurde um ein Dropdown-Menü zur Staffelauswahl ergänzt, um bei vielen Staffeln die Übersicht zu wahren. Hover-Effekte und reduzierte Informationstexte sorgen für mehr Klarheit und weniger kognitive Belastung.', images: [Uebersicht11, Uebersicht12] },
-                    { title: 'Dokumentation', text: 'Interaktive Dokumentationen wurden durch ein Cube-Icon kenntlich gemacht. Die Bühne S spart Platz und lässt mehr Inhalte zu. Zusatzseiten wie „Fakten“ wurden beibehalten, während inhaltlich überladene Seiten wie „Interview“ zugunsten einer besseren Usability entfernt wurden.', images: [Uebersicht13, Uebersicht14] },
+                    {
+                        title: 'Hauptübersicht',
+                        text: 'Version 4 ergänzt Bühne L, um Highlights hervorzuheben und Orientierung zu fördern.',
+                        images: [Uebersicht5, Uebersicht6],
+                    },
+                    {
+                        title: 'Serien & Interaktiv',
+                        text: 'Neues Plakat-Clusterband, Hover vergrößert nur noch Inhalt mit farbiger Umrandung.',
+                        images: [Uebersicht1, Uebersicht2, Uebersicht3, Uebersicht4],
+                    },
+                    {
+                        title: 'Live TV',
+                        text: 'Live-Videos starten direkt im Vollbild, ohne separaten Button; Zurück-Pfeil integriert.',
+                        images: [Uebersicht7, Uebersicht8],
+                    },
+                    {
+                        title: 'Sendung verpasst?',
+                        text: 'Optimierte Zeitnavigation; aktive Tageszeit wird beim Hover farbig hervorgehoben.',
+                        images: [Uebersicht9, Uebersicht10],
+                    },
+                    {
+                        title: 'Serie',
+                        text: 'Dropdown für Staffelauswahl sorgt für Übersicht; reduzierte Infos und Hover-Effekte verbessern Klarheit.',
+                        images: [Uebersicht11, Uebersicht12],
+                    },
+                    {
+                        title: 'Dokumentation',
+                        text: 'Interaktive Dokus mit Cube-Icon; überladene Seiten wie „Interview“ entfernt.',
+                        images: [Uebersicht13, Uebersicht14],
+                    },
                 ],
             },
             {
                 id: 'medien',
                 title: 'Mediensteuerung',
                 slides: [
-                    { title: 'Version 1–3', text: 'In den ersten drei Versionen blieb das Design der Mediensteuerung weitgehend unverändert. Die Icons wiesen einen konstanten Randabstand auf und vergrößerten sich im Hover-Zustand, ergänzt durch eine Beschriftung. Für interaktive Inhalte wurde das Informations-Icon durch ein Cube-Symbol ersetzt. Der Lautstärkeregler öffnete sich im Hover-Zustand nach oben, und der Vollbildmodus war über das Icon am unteren rechten Bildschirmrand zugänglich.', images: [Mediensteuerung1, Mediensteuerung2, Mediensteuerung4] },
-                    { title: 'Version 4', text: 'In der vierten Version wurde die Mediensteuerung kompakter gestaltet: Das Panel ist schmaler und höher, die Icons kleiner mit größerem Abstand zum Rand. Statt Größenänderung wechseln die Icons beim Hovern die Farbe zu ZDF-Orange, die im aktiven Zustand bestehen bleibt. Der Lautstärkeregler ist dauerhaft oben links sichtbar und bleibt im Panel. Das Vollbild-Icon wurde integriert, das Cube-Icon für interaktive Inhalte an den unteren rechten Bildschirmrand verschoben.', images: [Mediensteuerung3, Mediensteuerung6, Mediensteuerung5] },
+                    {
+                        title: 'Version 1–3',
+                        text: 'Design blieb ähnlich: Icons mit konstantem Randabstand, Farb- und Größenänderung bei Hover, Lautstärkeregler öffnete sich oben, Vollbild über Icon unten rechts.',
+                        images: [Mediensteuerung1, Mediensteuerung2, Mediensteuerung4],
+                    },
+                    {
+                        title: 'Version 4',
+                        text: 'Kompakteres Panel mit kleineren Icons und größerem Abstand. Icons wechseln beim Hover die Farbe zu ZDF-Orange, Lautstärkeregler dauerhaft sichtbar oben links. Vollbild-Icon integriert, Cube-Icon für interaktive Inhalte unten rechts.',
+                        images: [Mediensteuerung3, Mediensteuerung6, Mediensteuerung5],
+                    },
                 ],
-            },
+            }
         ],
     },
     {
@@ -315,21 +374,24 @@ const Implementation = () => {
                                                 src={imgSrc}
                                                 alt={`${currentSlide.title} Bild ${idx + 1}`}
                                                 className={
-                                                    ['pfad-mediathek', 'pfad-interaktiv', 'pfad-livetv'].includes(activeSection)
+                                                    ['pfad-mediathek', 'pfad-interaktiv'].includes(activeSection)
                                                         ? 'max-w-[1920px] max-h-[1080px]'
-                                                        : ['startseite'].includes(activeSection) ||
-                                                            (activeSection === 'uebersicht' &&
-                                                                ['Live TV', 'Sendung verpasst?', 'Serie', 'Dokumentation'].includes(currentSlide.title))
-                                                            ? 'max-w-[600px] max-h-[200px]'
-                                                            : activeSection === 'navi-struktur'
-                                                                ? 'max-w-[700px] max-h-[500px]'
-                                                                : 'max-w-[300px] max-h-[220px]'
+                                                        : ['pfad-livetv'].includes(activeSection)
+                                                            ? 'max-w-[1440px] max-h-[920px]'
+                                                            : ['startseite'].includes(activeSection) ||
+                                                                (activeSection === 'uebersicht' &&
+                                                                    ['Live TV', 'Sendung verpasst?', 'Serie', 'Dokumentation'].includes(currentSlide.title))
+                                                                ? 'max-w-[600px] max-h-[200px]'
+                                                                : activeSection === 'navi-struktur'
+                                                                    ? 'max-w-[700px] max-h-[500px]'
+                                                                    : 'max-w-[300px] max-h-[220px]'
                                                 }
                                             />
                                         </div>
                                     ))}
                                 </div>
                             )}
+
                         </motion.div>
                     )}
 

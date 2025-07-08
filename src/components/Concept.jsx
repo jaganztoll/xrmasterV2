@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Element } from 'react-scroll';
 import { motion } from 'framer-motion';
+
 import Brainstorm from '../assets/brainstorm.png';
+
 import Navigationsstruktur from '../assets/implementation/navigationsstruktur.png';
 
+import StageSlider from './StageSlider';
 import ConceptSlider from './ConceptSlider';
 import ScreenDesignSlider from './ScreenDesignSlider';
 
@@ -13,28 +16,20 @@ const tabs = [
     title: 'Content Struktur',
     items: [
       {
-        title: 'Verzicht auf klassische Webelemente',
-        text: 'Hauptnavigation, Promomodule und Footer werden bewusst ausgelassen, da sie für MR unpraktisch sind (z. B. Hover, Scroll).',
+        title: 'Verzicht auf Flyout-Hauptnavigation',
+        text: 'Hover-basierte Navigationselemente sind in MR unpraktisch und entfallen zugunsten klar platzierter Interaktionsflächen.',
       },
       {
         title: 'Bühnenkonzept (S, M, L)',
-        text: 'Bühne S für Übersichtsseiten, Bühne M bei Detailtiefe (z. B. Serien), Kombination S+L in Gesamtübersicht zur Hervorhebung aktueller Inhalte.',
-      },
-      {
-        title: 'Optimierte Raumaufteilung',
-        text: 'Kompakte Bühnenstruktur ersetzt klassische Seitenlayouts zur effizienten Nutzung des begrenzten MR-Raums.',
+        text: 'Inhalte werden je nach Kontext in unterschiedlichen Bühnen präsentiert. Bühne S (Standard), Bühne M (Detail), Kombination S+L (Gesamtübersicht).',
       },
       {
         title: 'Verzicht auf Promomodule',
-        text: 'Promoinhalte entfallen zugunsten aktiv aufrufbarer, relevanter Inhalte ohne visuelle Überfrachtung.',
+        text: 'Promoinhalte entfallen, um den Fokus auf relevante Inhalte zu legen.',
       },
       {
         title: 'Alternative zum Footer',
-        text: 'Footer-Informationen (z. B. Impressum, Hilfe) sind über ein kontextsensitives Untermenü im rechten Panel erreichbar.',
-      },
-      {
-        title: 'Fokuslenkung durch Reduktion',
-        text: 'Durch Weglassen irrelevanter Elemente bleibt der Nutzerfokus auf den eigentlichen Inhalten, was Übersicht und Immersion erhöht.',
+        text: 'Footer-Informationen (z.B. Impressum, Hilfe) sind über ein kontextsensitives Untermenü im rechten Panel erreichbar.',
       },
     ],
   },
@@ -44,43 +39,43 @@ const tabs = [
     items: [
       {
         title: 'Startseitenlogik',
-        text: 'Startseite zeigt standardmäßig geöffnete Navigationspanels, um eine schnelle Orientierung und Übersicht zu ermöglichen.',
+        text: 'Startseite zeigt offene Panels zur schnellen Orientierung.',
       },
       {
-        title: 'Dynamisches Panel-Verhalten',
-        text: 'Navigationspanels schließen sich automatisch beim Verlassen der Startseite (Prinzip: Hide) und öffnen sich bei erneuter Interaktion.',
+        title: 'Panel-Verhalten (Hide-Prinzip)',
+        text: 'Panels schließen sich automatisch beim Verlassen der Startseite und öffnen sich bei Interaktion.',
       },
       {
-        title: 'Reihenfolge der Hauptfunktionen',
-        text: 'Links nach rechts: Mediathek, Interaktives TV (zentral), Live TV – angeordnet nach Nutzungshäufigkeit und natürlichem Lesefluss.',
+        title: 'Hauptfunktionen: Mediathek, Interaktiv TV, Live TV',
+        text: 'Anordnung folgt Nutzungshäufigkeit & Lesefluss; Interaktiv TV zentral als Fokus.',
       },
       {
-        title: 'Linkes Navigationspanel',
-        text: 'Beinhaltet Rubrikenübersicht, Interaktives TV, Live TV, Sendung verpasst – bietet konsistenten Zugriff auf zentrale Inhalte.',
+        title: 'Rubriken-Zugriff',
+        text: 'Über Hauptübersicht oder direkt zu Serien/Dokus – erhöht Aufgabenangemessenheit.',
       },
       {
-        title: 'Rechtes Navigationspanel',
-        text: 'ZDF-Logo führt zur Startseite; Glühbirnensymbol erlaubt Steuerung der Ambient-Beleuchtung; enthält außerdem Zugang zu „Mein ZDF“ & barrierefreien Angeboten.',
+        title: 'Navigationspanels (links/rechts)',
+        text: 'Links: Rubriken & Hauptbereiche. Rechts: Start (ZDF-Logo), Ambient-Light, Mein ZDF & Barrierefreiheit.',
       },
       {
         title: 'Dark/Light Mode',
-        text: 'Umschaltbares Farbschema für bessere Benutzerfreundlichkeit und Berücksichtigung individueller Präferenzen.',
+        text: 'Umschaltbares Farbschema zur Unterstützung individueller Präferenzen.',
       },
       {
-        title: 'Rubriken-Navigation',
-        text: 'Zugriff entweder über Hauptübersichtsseite oder direkt zur Rubrikenseite (z. B. Serien, Dokus); fördert Aufgabenangemessenheit.',
-      },
-      {
-        title: 'Videowiedergabe im Vollbild',
-        text: 'Video startet im Vollbild (Panels werden ausgeblendet, Hauptscreen bleibt gleich groß), um maximale Immersion zu bieten.',
-      },
-      {
-        title: 'Mediensteuerung im Vollbild',
-        text: 'Steuerpanel erscheint am unteren Rand – bleibt im Vollbild sichtbar und erlaubt ergonomische, kontextbezogene Bedienung.',
+        title: 'Ambient-Light-Steuerung',
+        text: 'Glühbirnen-Icon im rechten Panel ermöglicht Dimmung und Steuerung der Hintergrundbeleuchtung.',
       },
       {
         title: 'Zurück-Button',
-        text: 'Ermöglicht jederzeitiges Zurückkehren zur vorherigen Ansicht; erhöht Erwartungskonformität und Usability.',
+        text: 'Ermöglicht jederzeitiges Zurück – entspricht Erwartungskonformität.',
+      },
+      {
+        title: 'Vollbildmodus mit Fokus',
+        text: 'Beim Start der Wiedergabe bleiben Panels sichtbar; erst im eigentlichen Vollbildmodus werden sie ausgeblendet – Screengröße bleibt konstant.',
+      },
+      {
+        title: 'Fixierte Mediensteuerung',
+        text: 'Mediensteuerung bleibt auch im Vollbildmodus inaktiv sichtbar und am unteren Rand fixiert.',
       },
     ],
   },
@@ -163,6 +158,13 @@ const Concept = () => {
                     </div>
                   ))}
                 </motion.div>
+
+                {/* Images: Content Struktur */}
+                {activeTab === 'content' && (
+                  <div className="mt-10">
+                    <StageSlider />
+                  </div>
+                )}
 
                 {/* Image: Navigationsstruktur */}
                 {activeTab === 'navigation' && (

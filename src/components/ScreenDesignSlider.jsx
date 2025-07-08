@@ -30,7 +30,7 @@ const slides = [
     {
         category: 'Hintergrund',
         description:
-            'Light Mode: ZDF-Hellgrau für ruhige Atmosphäre. Dark Mode: Dunkelblau für modernen Look und Augenschonung. Sechs ZDF-Farben schaffen visuelle Hierarchie.',
+            'Light Mode: ZDF-Hellgrau für ruhige Atmosphäre. Dark Mode: Dunkelblau für modernen Look. Sechs ZDF-Farben schaffen visuelle Hierarchie.',
         images: [
             { src: Hintergrund1, title: '' },
             { src: Hintergrund2, title: '' },
@@ -43,7 +43,7 @@ const slides = [
     {
         category: 'Typografie',
         description:
-            'Logo und Hausschrift werden übernommen. ZDF Type für Überschriften, Segoe UI für Fließtext. Weiß und Dunkelblau für optimalen Kontrast.',
+            'Logo und Hausschrift werden übernommen. Weiß und Dunkelblau für optimalen Kontrast.',
         images: [
             { src: Typografie1, title: '' },
             { src: Typografie2, title: '' },

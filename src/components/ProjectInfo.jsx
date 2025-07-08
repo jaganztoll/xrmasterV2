@@ -28,12 +28,12 @@ const sections = [
           className="w-full max-w-xl mx-auto"
         />
         <ul className="list-disc pl-6 pt-4">
-          <li>Analyse und heuristische Evaluation der bestehenden ZDFmediathek</li>
-          <li>Definition funktionaler und nicht-funktionaler Anforderungen</li>
-          <li>Entwicklung eines Designkonzepts unter Berücksichtigung von Spatial UI und UX-Prinzipien</li>
-          <li>Iterative Umsetzung eines High-Fidelity-Prototyps mit kontinuierlicher Verfeinerung</li>
-          <li>Durchführung von Usability-Tests während der Entwicklungsphase</li>
-          <li>Abschlussdokumentation mit Ergebnissen, Erkenntnissen und Ausblick auf zukünftige Entwicklungen</li>
+          <li>Analyse und heuristische <strong>Evaluation</strong> der bestehenden ZDFmediathek</li>
+          <li>Definition funktionaler und nicht-funktionaler <strong>Anforderungen</strong></li>
+          <li>Entwicklung eines <strong>Konzepts</strong> unter Berücksichtigung von Spatial UI und UX-Prinzipien</li>
+          <li>Iterative <strong>Entwicklung</strong> eines High-Fidelity-Prototyps mit kontinuierlicher Verfeinerung</li>
+          <li>Durchführung von Usability-<strong>Tests</strong> während der Entwicklungsphase</li>
+          <li><strong>Abschlussdokumentation</strong> mit Ergebnissen, Erkenntnissen und Ausblick auf zukünftige Entwicklungen</li>
         </ul>
       </div>
     ),

@@ -1,25 +1,39 @@
 import React from 'react';
-import { Element } from 'react-scroll';
 import { DiGoogleDrive } from "react-icons/di";
 
-const Thesis = () => {
+const exampleVideoUrl = 'https://drive.google.com/file/d/1dwuXCZVWFIB7PzeJIdAC87PwnFEiUDZL/view?usp=drive_link';
+const thesisUrl = 'https://drive.google.com/file/d/198y-KvVVpTpE-H1s-8tqHfH0-xBlzWzx/view';
+
+const Footer = () => {
     return (
-        <section className="w-full py-2 px-6 bg-[var(--background)] text-[var(--text)] font-quicksand selection:bg-[var(--accent)]">
-            <Element name="thesis" className="h-24 flex items-center justify-center">
-                <div className="max-w-4xl mx-auto text-center flex items-center">
-                    <div className="text-lg md:text-xl font-medium">
-                        Hier geht es zu meiner
-                        <a href="https://drive.google.com/file/d/198y-KvVVpTpE-H1s-8tqHfH0-xBlzWzx/view"
-                            target="_blank" rel="noopener noreferrer"
-                            className="text-lg md:text-xl underline underline-offset-3 decoration-1 text-[var(--text)] hover:text-[var(--accent)] ml-1">
-                            Masterarbeit
-                        </a>
-                        <DiGoogleDrive className="inline w-8 h-8 md:w-10 md:h-10 fill-[var(--text)] align-[-12px] transition-colors duration-300" />
-                    </div>
-                </div>
-            </Element>
-        </section>
+        <footer className="w-full py-6 px-6 bg-[var(--background)] text-[var(--text)] font-quicksand selection:bg-[var(--accent)]">
+            <div className="max-w-4xl mx-auto text-center text-lg md:text-xl font-medium flex items-center justify-center gap-2 flex-wrap">
+                <a
+                    href={exampleVideoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 underline underline-offset-3 decoration-1 text-[var(--text)] hover:text-[var(--accent)] whitespace-nowrap"
+                    aria-label="Beispielvideo"
+                >
+                    Beispielvideo
+                </a>
+
+                <span className="whitespace-nowrap">oder</span>
+
+                <a
+                    href={thesisUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 underline underline-offset-3 decoration-1 text-[var(--text)] hover:text-[var(--accent)] whitespace-nowrap"
+                    aria-label="Masterarbeit"
+                >
+                    Masterarbeit
+                </a>
+                <span className="whitespace-nowrap">ansehen</span>
+                <DiGoogleDrive className="w-6 h-6 md:w-7 md:h-7 fill-[var(--text)] transition-colors duration-300" />
+            </div>
+        </footer>
     );
 };
 
-export default Thesis;
+export default Footer;

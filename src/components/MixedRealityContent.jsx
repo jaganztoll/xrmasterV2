@@ -98,16 +98,16 @@ const MixedRealityPresentation = () => {
                     <h3 className="text-xl font-semibold mb-4">Wichtige MR-Definitionen</h3>
                     <ul className="list-disc pl-6 space-y-3 text-lg mb-4">
                         <li>
-                            <strong>Milgram et al. (1994):</strong> Reality-Virtuality-Kontinuum mit AR (reale Welt dominiert) und AV (virtuelle Welt dominiert).
+                            <strong>Milgram et al. (1994):</strong> MR als Spektrum zwischen Realität und virtueller Realität, mit <em>Augmented Reality (AR)</em> und <em>Augmented Virtuality (AV)</em> als Zwischenstufen.
                         </li>
                         <li>
-                            <strong>Farshid et al. (2020):</strong> Erweitertes Kontinuum mit 6 Realitätsformaten; MR als Verschmelzung realer und virtueller Elemente.
+                            <strong>Azuma (1997):</strong> AR als System mit drei technischen Merkmalen: reale/virtuelle Kombination, Echtzeit-Interaktion und 3D-Registrierung.
                         </li>
                         <li>
-                            <strong>Azuma (1997):</strong> AR als technisches System mit Echtzeit-Interaktivität und 3D-Registrierung.
+                            <strong>Farshid et al. (2020):</strong> Sechs Realitätsformate (u.a. AR, MR, AV, Virtuality); MR als Verschmelzung realer und virtueller Elemente.
                         </li>
                         <li>
-                            <strong>Rauschnabel et al. (2021):</strong> AR und VR als getrennte Kontinua; MR als fortgeschrittene Form von AR, definiert über lokale Präsenz.
+                            <strong>Rauschnabel et al. (2021):</strong> AR und VR als getrennte Kontinua; MR als höchste Stufe lokaler Präsenz innerhalb von AR. AV wird nicht berücksichtigt.
                         </li>
                     </ul>
 
@@ -180,44 +180,56 @@ const MixedRealityPresentation = () => {
                         </thead>
                         <tbody>
                             <tr>
-                                <td className="p-2 border font-semibold">Konzept</td>
+                                <td className="p-2 border font-semibold">Grundkonzept</td>
                                 <td className="p-2 border">Reality-Virtuality-Kontinuum</td>
-                                <td className="p-2 border">Erweitertes Kontinuum (6 Realitätsformen)</td>
-                                <td className="p-2 border">AR als technisches Mittelfeld</td>
-                                <td className="p-2 border">Getrennte Kontinua für AR und VR</td>
+                                <td className="p-2 border">6-stufiges Realitätskontinuum</td>
+                                <td className="p-2 border">Technisches AR-Modell</td>
+                                <td className="p-2 border">Zwei getrennte Kontinua (AR/VR)</td>
                             </tr>
                             <tr>
-                                <td className="p-2 border font-semibold">MR Definition</td>
-                                <td className="p-2 border">Mischform von Realität und VR</td>
-                                <td className="p-2 border">Verschmelzung realer & virtueller Elemente</td>
+                                <td className="p-2 border font-semibold">MR-Definition</td>
+                                <td className="p-2 border">Zwischen Realität und VR</td>
+                                <td className="p-2 border">Fusion realer & virtueller Elemente</td>
                                 <td className="p-2 border">Nicht explizit definiert</td>
-                                <td className="p-2 border">Fortgeschrittene Form von AR</td>
+                                <td className="p-2 border">Höchste Stufe von AR</td>
                             </tr>
                             <tr>
                                 <td className="p-2 border font-semibold">Stärken</td>
-                                <td className="p-2 border">Einfach und intuitiv</td>
-                                <td className="p-2 border">Umfassend und differenziert</td>
-                                <td className="p-2 border">Fokus auf technische Merkmale</td>
-                                <td className="p-2 border">Klare Trennung von AR und VR</td>
+                                <td className="p-2 border">Einfach, gut verständlich</td>
+                                <td className="p-2 border">Umfassend & differenziert</td>
+                                <td className="p-2 border">Technisch präzise</td>
+                                <td className="p-2 border">Klares, praxisnahes Modell</td>
                             </tr>
                             <tr>
                                 <td className="p-2 border font-semibold">Schwächen</td>
-                                <td className="p-2 border">Wenig differenziert</td>
-                                <td className="p-2 border">Komplex und umfangreich</td>
-                                <td className="p-2 border">MR nicht konkret definiert</td>
-                                <td className="p-2 border">Eingeschränkte MR-Definition</td>
+                                <td className="p-2 border">Zu grob & undifferenziert</td>
+                                <td className="p-2 border">Komplex & abstrakt</td>
+                                <td className="p-2 border">MR bleibt vage</td>
+                                <td className="p-2 border">MR sehr eng gefasst</td>
                             </tr>
                         </tbody>
                     </table>
+
                 </section>
             )}
 
             {activeTab === 'fazit' && (
                 <section className="max-w-3xl mx-auto px-4">
                     <h3 className="text-xl font-semibold mb-4">Fazit</h3>
-                    <p className="text-lg">
-                        Für diese Arbeit wird der Ansatz von <strong>Rauschnabel et al.</strong> bevorzugt. Er schafft aus Anwendersicht klare Abgrenzungen zwischen AR und VR und definiert MR als höchste Ausprägung lokaler Präsenz innerhalb von AR.
+                    <p className="text-lg mb-4">
+                        Der Ansatz von <strong>Rauschnabel et al. (2021)</strong> wird in dieser Arbeit bevorzugt:
                     </p>
+                    <ul className="list-disc pl-6 space-y-2 text-lg mb-6">
+                        <li>Klare, nutzerzentrierte Trennung zwischen AR und VR</li>
+                        <li>MR = höchste lokale Präsenz innerhalb von AR</li>
+                        <li>AV wird nicht berücksichtigt – praxisfern und kaum verbreitet</li>
+                        <li>Einfache Unterscheidung:
+                            <ul className="list-disc pl-6 mt-1 space-y-1">
+                                <li><strong>Physische Umgebung sichtbar → AR</strong></li>
+                                <li><strong>Virtuelle Umgebung dominiert → VR</strong></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </section>
             )}
         </div>

@@ -44,7 +44,7 @@ const InteractionContent = () => {
                 <section>
                     <h2 className="text-xl font-bold mb-4">Hand-Tracking</h2>
                     <p className="mb-4">
-                        Hand-Tracking erfolgt über <strong>Inside-Out-Tracking</strong> (Sensoren im Headset) oder <strong>Outside-In-Tracking</strong> (externe Sensoren). Kameras und Tiefensensoren wie LiDAR erfassen Handbewegungen in Echtzeit und ermöglichen eine natürliche Interaktion in VR-Umgebungen.
+                        Handbewegungen werden per Kamera-Tracking erfasst – entweder durch im HMD verbaute Sensoren <strong>(Inside-Out)</strong> oder externe Geräte <strong>(Outside-In)</strong>. Damit sind natürliche Interaktionen ohne Controller möglich.
                     </p>
                 </section>
             )}
@@ -53,9 +53,7 @@ const InteractionContent = () => {
                 <section>
                     <h2 className="text-xl font-bold mb-4">Gestensteuerung</h2>
                     <p className="mb-4">
-                        Die Meta Quest 3 unterstützt verschiedene Gesten, darunter zwei für Navigation:
-                        <strong> Auswählen</strong> (Zusammenführen von Daumen und Zeigefinger) und
-                        <strong> Scrollen</strong> (Ziehen mit zwei Fingern).
+                        Einfache Fingergesten ermöglichen intuitive Steuerung: <strong>Auswählen</strong> durch Zusammenführen von Daumen und Zeigefinger, <strong>Scrollen</strong> durch Ziehen mit zwei Fingern (z.B. bei der Meta Quest 3).
                     </p>
                     <div className="grid gap-4 sm:grid-cols-2">
                         <img src={AuswaehlenMeta} alt="Geste: Auswählen" className="rounded-xl shadow" loading="lazy" />
@@ -68,7 +66,7 @@ const InteractionContent = () => {
                 <section>
                     <h2 className="text-xl font-bold mb-4">Voice-Control</h2>
                     <p className="mb-4">
-                        Sprachsteuerung wandelt Sprache mittels <strong>Speech-to-Text</strong> und <strong>Natural Language Processing</strong> in Steuerbefehle um. Die Erkennung erfolgt durch Verarbeitung von Sprachsignalen in <strong>Spektrogrammen</strong>, die von <strong>neuronalen Netzen</strong> klassifiziert werden.
+                        Spracheingaben werden erkannt, in Text umgewandelt und als Befehle interpretiert. Für zukünftige Versionen relevant – etwa im Kontext Barrierefreiheit.
                     </p>
                 </section>
             )}
@@ -77,7 +75,7 @@ const InteractionContent = () => {
                 <section>
                     <h2 className="text-xl font-bold mb-4">Head-Tracking</h2>
                     <p className="mb-4">
-                        Head-Tracking erfasst Kopfbewegungen mittels Sensoren und passt die virtuelle Perspektive in Echtzeit an. Es bildet die Grundlage für <strong>3DoF</strong> und <strong>6DoF Systeme</strong>, wobei moderne HMDs wie Meta Quest 3 <strong>Inside-Out-Tracking</strong> nutzen, um Bewegungsfreiheit im Raum zu ermöglichen. Geräte wie HoloLens 2 ergänzen dies um Head-Gaze-basierte Auswahlmechanismen.
+                        Die Kopfbewegung wird erkannt und die Perspektive in Echtzeit angepasst. Grundlage für immersive Erlebnisse mit <strong>3DoF</strong> oder <strong>6DoF</strong>. <strong>Head-Gaze & dwell</strong> ist zudem eine alternative Eingabemethode.
                     </p>
                     <div className="flex justify-center">
                         <img
@@ -94,7 +92,7 @@ const InteractionContent = () => {
                 <section>
                     <h2 className="text-xl font-bold mb-4">Eye-Tracking</h2>
                     <p className="mb-4">
-                        Eye-Tracking erfasst die Blickrichtung über Kameras im Headset und ermöglicht die Analyse von Augenbewegungen wie <strong>Fixationen</strong> und <strong>Sakkaden</strong>. <strong>Gaze-Tracking</strong> verwendet diese Daten zur genauen Bestimmung des Blickpunkts. Bei der Apple Vision Pro ist Eye-Tracking mit Gesten oder Verweildauer als Eingabe kombiniert.
+                        Blickrichtungen werden analysiert, um den Fokuspunkt zu bestimmen. In der Apple Vision Pro mit <strong>Geste</strong> oder <strong>Verweildauer</strong> kombiniert – für schnelle, intuitive Auswahl.
                     </p>
                     <img
                         src={IndirekteEingabe}
@@ -109,8 +107,9 @@ const InteractionContent = () => {
                 <section>
                     <h2 className="text-xl font-bold mb-4">Direct Manipulation</h2>
                     <p className="mb-4">
-                        Direct Manipulation bezeichnet die direkte Steuerung von Objekten in der virtuellen Umgebung. Systeme wie die Meta Quest 3 ermöglichen <strong>Direct-Touch</strong> (z.B. Scrollen oder Klicken durch Fingergesten), ähnlich wie bei einem Touchpad.
+                        Virtuelle Objekte lassen sich direkt manipulieren. Beispiele: <strong>Scrollen</strong> mit dem Finger, <strong>Klicken</strong> durch Berührung oder <strong>Verschieben</strong> von Objekten.
                     </p>
+
                     <div className="grid gap-4 sm:grid-cols-2">
                         <img src={TouchMeta} alt="Direct Touch (Meta)" className="rounded-xl shadow" loading="lazy" />
                         <img src={DirekteEingabe} alt="Direkte Eingabe" className="rounded-xl shadow w-full h-45 object-cover" loading="lazy" />

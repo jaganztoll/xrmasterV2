@@ -3,18 +3,18 @@ import { Element } from "react-scroll";
 import { motion } from "framer-motion";
 
 const functionalRequirements = [
-    { id: "F-01", text: "Intuitive, gestenbasierte Navigation mit Erweiterungspotenzial", priority: "Hoch" },
-    { id: "F-02", text: "Klare Hauptkategorien (Mediathek, Interaktiv TV, Live TV)", priority: "Hoch" },
-    { id: "F-05", text: "Suchfunktion zur einfachen Inhaltsfindung", priority: "Hoch" },
-    { id: "F-08", text: "Kontextbezogenes Steuer-Panel während der Videowiedergabe", priority: "Hoch" },
-    { id: "F-13", text: "Visuelles Feedback bei Interaktionen", priority: "Hoch" },
+    { id: "F-01", text: "Intuitive, gestenbasierte Navigation ohne Anleitung mit Erweiterungspotenzial", priority: "Hoch" },
+    { id: "F-03", text: "Hauptkategorien Mediathek, Interaktiv TV und Live TV", priority: "Hoch" },
+    { id: "F-08", text: "Kontextbezogenes unteres Steuer-Panel während der Videowiedergabe", priority: "Hoch" },
+    { id: "F-12", text: "Interaktive Elemente innerhalb von Beiträgen müssen klar gekennzeichnet sein.", priority: "Hoch" },
+    { id: "F-14", text: "Visuelles Feedback (z.B. Hervorheben, Farbänderung) bei Hover zur Anzeige von Interaktivität", priority: "Mittel" },
 ];
 
 const nonFunctionalRequirements = [
-    { id: "NF-03", text: "Intuitive, konsistente Benutzeroberfläche", priority: "Hoch" },
     { id: "NF-02", text: "Reaktionsschnelle Anzeige interaktiver Elemente ohne Verzögerung", priority: "Hoch" },
+    { id: "NF-03", text: "Intuitive, konsistente Benutzeroberfläche", priority: "Hoch" },
     { id: "NF-09", text: "Im Vollbildmodus müssen die Panels links und rechts ausgebelendet werden.", priority: "Hoch" },
-    { id: "NF-10", text: "Modernes Design gemäß ZDF Brandguide", priority: "Hoch" },
+    { id: "NF-10", text: "Modernes, minimalistisches Design gemäß ZDF Brandguide", priority: "Hoch" },
     { id: "NF-11", text: "Einheitliche Designelemente und Interaktionsmuster", priority: "Hoch" },
 ];
 
