@@ -64,10 +64,11 @@ const DesignPrinciplesPresentation = () => {
                         <li><strong>Aufgabenangemessenheit:</strong> Unterstützung der Nutzerziele</li>
                         <li><strong>Selbstbeschreibungsfähigkeit:</strong> Verständliche Bedienung</li>
                         <li><strong>Erwartungskonformität:</strong> Konsistente Gestaltung</li>
-                        <li><strong>Erlernbarkeit:</strong> Schneller Einstieg</li>
                         <li><strong>Steuerbarkeit:</strong> Volle Nutzerkontrolle</li>
                         <li><strong>Fehlertoleranz:</strong> Fehler vermeiden & beheben</li>
-                        <li><strong>Benutzerbindung:</strong> Motivation durch Design</li>
+                        <li><strong>Lernförderlichkeit:</strong> Schneller Einstieg durch Unterstützung</li>
+                        <li><strong>Individualisierbarkeit:</strong> An Vorlieben anpassbar</li>
+
                     </ul>
 
                 </section>
